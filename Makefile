@@ -33,6 +33,7 @@ CXXFLAGS = -Wall -Wextra -Werror -Iinc -MD -O3 -g3 -fsanitize=address
 LDFLAGS = -fsanitize=address
 
 # Folders
+:q
 OBJ_DIR = obj/
 SRC_DIR = src/
 
