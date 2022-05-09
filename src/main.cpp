@@ -11,7 +11,7 @@ int main(void)
 	int		new_socket;
 	int		enable;
 	struct	sockaddr_in address;
-	char	buff[1024];
+	char	buff[1024] = {0};
 	int		addrlen = sizeof(address);
 
 	address.sin_family = AF_INET;
