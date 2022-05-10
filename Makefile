@@ -38,7 +38,7 @@ OBJ_DIR = obj/
 SRC_DIR = src/
 
 # Source files and includes
-SRC_FILES = main.cpp
+SRC_FILES = main.cpp my_socket.cpp
 
 # Objs
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))	
