@@ -1,5 +1,22 @@
 #include "my_socket.hpp"
 
+//This funcition read the fds in poll_fds ready to read and add the sring
+//to msg_queue
+void	my_socket::read_fds()
+{
+	char	buff[1024];
+	std::vector<pollfd>::iterator	it;
+
+	for(it = this->poll_fds.begin(); it != this->poll_fds.end(); it++)
+	{
+		if((it->revents & POLLIN) && (it->fd != this->socket_fd))
+		{
+			read(it->fd, buff, 1024);
+			this->msg_queue.push(std::string(buff));
+		}
+	}
+}
+
 void	my_socket::scan_fds()
 {
 	std::vector<pollfd>::iterator	it;
@@ -12,7 +29,8 @@ void	my_socket::scan_fds()
 			{
 				int	new_fd;
 
-				new_fd = accept(this->socket_fd, (struct sockaddr *) &(this->data_socket), (socklen_t *) &(this->data_socket_len));
+				new_fd = accept(this->socket_fd, (struct sockaddr *) &(this->data_socket), 
+						(socklen_t *) &(this->data_socket_len));
 				poll_fds.push_back(pollfd());
 				poll_fds.back().fd = new_fd;
 				poll_fds.back().events = POLLIN;
@@ -44,4 +62,5 @@ void	my_socket::init_socket()
 	poll_fds.back().events = POLLIN;
 	poll((struct pollfd *) &(this->poll_fds[0]), this->poll_fds.size(), 50000);
 	this->scan_fds();
+	this->read_fds();
 }

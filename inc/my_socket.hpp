@@ -2,6 +2,7 @@
 # define _MY_SOCKET_HPP_
 
 #include <vector>
+#include <unistd.h>
 #include <queue>
 #include <string>
 #include <arpa/inet.h>
@@ -22,11 +23,13 @@ class	my_socket
 		std::queue<std::string>	msg_queue;
 
 		void				scan_fds();
+		void				read_fds();
 
 	public:
 		my_socket(const int port);
 	//	~socket();
-		void	init_socket();
+		void		init_socket();
+		std::string	get_msg();
 };
 
 #endif
