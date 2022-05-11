@@ -16,14 +16,14 @@
 class	my_socket
 {
 	private:
-		int					socket_fd;
-		std::vector<pollfd>	poll_fds;
-		struct sockaddr_in	data_socket;
-		int					data_socket_len; //Need to accept function
+		int						socket_fd;
+		std::vector<pollfd>		poll_fds;
+		struct sockaddr_in		data_socket;
+		int						data_socket_len; //Need to accept function
 		std::queue<std::string>	msg_queue;
 
-		void				scan_fds();
-		void				read_fds();
+		void					scan_fds();
+		void					read_fds();
 
 	public:
 		my_socket(const int port);

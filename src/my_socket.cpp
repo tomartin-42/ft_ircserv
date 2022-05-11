@@ -1,5 +1,18 @@
 #include "my_socket.hpp"
 
+//Tis function return(std::string) the first msg in the queue and delete
+//this element. If the queue is empty return NULL
+std::string	my_socket::get_msg()
+{
+	std::string	aux;
+	
+	if(msg_queue.empty())
+		return NULL;
+	aux = this->msg_queue.front();
+	this->msg_queue.pop();
+	return aux;
+}
+
 //This funcition read the fds in poll_fds ready to read and add the sring
 //to msg_queue
 void	my_socket::read_fds()
