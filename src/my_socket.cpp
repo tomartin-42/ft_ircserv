@@ -17,16 +17,16 @@ std::string	my_socket::get_msg()
 //to msg_queue
 void	my_socket::read_fds()
 {
-	char	buff[1024];
-	std::vector<pollfd>::iterator	it;
+	char	buff[1024] = {0};
+	std::vector<int>::iterator	it;
 
-	for(it = this->poll_fds.begin(); it != this->poll_fds.end(); it++)
+	for(it = this->fds_open_read.begin(); it != this->fds_open_read.end(); it++)
 	{
-		if((it->revents & POLLIN) && (it->fd != this->socket_fd))
-		{
-			read(it->fd, buff, 1024);
+		//if((it->revents & POLLIN) && (it->fd != this->socket_fd))
+		//{
+			read(*it, buff, 1024);
 			this->msg_queue.push(std::string(buff));
-		}
+		//}
 	}
 }
 
@@ -36,20 +36,17 @@ void	my_socket::scan_fds()
 
 	for(it = this->poll_fds.begin(); it != this->poll_fds.end(); it++)
 	{
-		std::cout << "HOLA " << poll_fds.size() << it->revents << std::endl;
 		if(it->revents & POLLIN)
 		{
-			if(it->fd == this->socket_fd)
-			{
+		//	if(it->fd == this->socket_fd)
+		//	{
 				int	new_fd;
 
-				std::cout << "HOLA2\n";
 				new_fd = accept(this->socket_fd, (struct sockaddr *) &(this->data_socket), 
 						(socklen_t *) &(this->data_socket_len));
-				poll_fds.push_back(pollfd());
-				poll_fds.back().fd = new_fd;
-				poll_fds.back().events = POLLIN;
-			}
+				std::cout << "NEW FD " << new_fd << std::endl;
+				fds_open_read.push_back(new_fd);
+		//	}
 		}
 	}
 }
@@ -75,7 +72,11 @@ void	my_socket::init_socket()
 	poll_fds.push_back(pollfd());
 	poll_fds.back().fd = this->socket_fd;
 	poll_fds.back().events = POLLIN;
-	poll((struct pollfd *) &(this->poll_fds[0]), this->poll_fds.size(), 50000);
-	this->scan_fds();
-	this->read_fds();
+	while (1)
+	{
+		poll((struct pollfd *) &(this->poll_fds[0]), this->poll_fds.size(), 50000);
+		this->scan_fds();
+		this->read_fds();
+		std::cout << get_msg();
+	}
 }

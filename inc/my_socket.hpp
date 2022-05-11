@@ -22,6 +22,7 @@ class	my_socket
 		struct sockaddr_in		data_socket;
 		int						data_socket_len; //Need to accept function
 		std::queue<std::string>	msg_queue;
+		std::vector<int>		fds_open_read;
 
 		void					scan_fds();
 		void					read_fds();
