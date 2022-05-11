@@ -36,12 +36,14 @@ void	my_socket::scan_fds()
 
 	for(it = this->poll_fds.begin(); it != this->poll_fds.end(); it++)
 	{
+		std::cout << "HOLA " << poll_fds.size() << it->revents << std::endl;
 		if(it->revents & POLLIN)
 		{
 			if(it->fd == this->socket_fd)
 			{
 				int	new_fd;
 
+				std::cout << "HOLA2\n";
 				new_fd = accept(this->socket_fd, (struct sockaddr *) &(this->data_socket), 
 						(socklen_t *) &(this->data_socket_len));
 				poll_fds.push_back(pollfd());
