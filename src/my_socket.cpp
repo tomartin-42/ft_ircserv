@@ -12,7 +12,7 @@ void	my_socket::scan_fds()
 			{
 				int	new_fd;
 
-				new_fd = accept(this->socket_fd, (struct scokaddr_in *) &(this->data_socket), (socklen_t *) &(this->data_socket_len));
+				new_fd = accept(this->socket_fd, (struct sockaddr *) &(this->data_socket), (socklen_t *) &(this->data_socket_len));
 				poll_fds.push_back(pollfd());
 				poll_fds.back().fd = new_fd;
 				poll_fds.back().events = POLLIN;
