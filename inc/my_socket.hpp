@@ -2,17 +2,18 @@
 # define _MY_SOCKET_HPP_
 
 #include <vector>
+#include <string.h>
 #include <unistd.h>
 #include <iostream>
 #include <queue>
 #include <string>
 #include <arpa/inet.h>
-#include <fcntl.h> // To fcntl function
-#include <sys/socket.h> // To socket
-#include <netinet/in.h> // To struct sockaddr_in
+#include <fcntl.h>								// To fcntl function
+#include <sys/socket.h>							// To socket
+#include <netinet/in.h>							// To struct sockaddr_in
 #include <sys/types.h>
-#include <poll.h> // To poll
-#include <fcntl.h> // To fcntl
+#include <poll.h>								// To poll
+#include <fcntl.h>								// To fcntl
 
 class	my_socket
 {
@@ -28,11 +29,11 @@ class	my_socket
 		void					read_fds();
 
 	public:
-		my_socket(const int port);
-	//	~socket();
+		my_socket(const int port);				//Constructor
 		void		init_socket();
-	//	std::string	get_msg();
+		std::string	get_msg();
 		void		print_msg_queue();
+		int			load_in_conections();
 };
 
 #endif

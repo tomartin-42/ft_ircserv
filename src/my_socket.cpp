@@ -2,6 +2,18 @@
 
 //Tis function return(std::string) the first msg in the queue and delete
 //this element. If the queue is empty return NULL
+std::string	my_socket::get_msg()
+{
+	std::string	aux;
+
+	if(!this->msg_queue.empty())
+		return(NULL);
+	aux = this->msg_queue.front();
+	this->msg_queue.pop();
+	return aux;
+}
+
+//Print the msg_queue. Only use to debug
 void	my_socket::print_msg_queue()
 {
 	std::string	aux;
@@ -10,7 +22,7 @@ void	my_socket::print_msg_queue()
 	{
 		aux = this->msg_queue.front();
 		this->msg_queue.pop();
-		std::cout << aux << std::endl;
+		std::cout << aux;
 	}
 }
 
@@ -25,21 +37,10 @@ void	my_socket::read_fds()
 	for(it = this->fds_open_read.begin(); it != this->fds_open_read.end(); it++)
 	{
 		bzero(buff, 1023);
-		read_len = read(*it, buff, 1024);
+		read_len = recv(*it, buff, 1024, MSG_DONTWAIT);
 		if(read_len > 0)
 			this->msg_queue.push(std::string(buff));
 	}		
-	
-/*
-	for(it = this->fds_open_read.begin(); it != this->fds_open_read.end(); it++)
-	{
-		//if((it->revents & POLLIN) && (it->fd != this->socket_fd))
-		//{
-			read(*it, buff, 1024);
-			this->msg_queue.push(std::string(buff));
-		//}
-	}
-*/
 }
 
 void	my_socket::scan_fds()
@@ -50,15 +51,11 @@ void	my_socket::scan_fds()
 	{
 		if(it->revents & POLLIN)
 		{
-		//	if(it->fd == this->socket_fd)
-		//	{
-				int	new_fd;
-
-				new_fd = accept(this->socket_fd, (struct sockaddr *) &(this->data_socket), 
-						(socklen_t *) &(this->data_socket_len));
-				//this->poll_fds.push_back(new_fd);
-				fds_open_read.push_back(new_fd);
-		//	}
+			int	new_fd;
+			
+			new_fd = accept(this->socket_fd, (struct sockaddr *) &(this->data_socket), 
+					(socklen_t *) &(this->data_socket_len));
+			fds_open_read.push_back(new_fd);
 		}
 	}
 }
@@ -71,10 +68,23 @@ my_socket::my_socket(const int port)
 	this->data_socket_len = sizeof(data_socket);
 }
 
+//When call this finction, if there are petitions POLLIN in my_socket,
+//load in fds_open_read(vector), if not there POLLIN petitions
+//do nothing. This function return a int: -1 if error, 0 if not have POLLIN petitions
+//if there ar POLLIN petitions return the number petitions
+int	my_socket::load_in_conections()
+{
+	int	check;
+
+	check = poll((struct pollfd *) &(this->poll_fds[0]), this->poll_fds.size(), 10000);
+	if(check > 0)
+		this->scan_fds();
+	return check;
+}
+
 void	my_socket::init_socket()
 {
 	int	enable; //need to enable setsockop values
-	int	check;
 
 	enable = 1; //need to enable setsockopt values
 	this->socket_fd = socket(AF_INET, SOCK_STREAM, 0);
@@ -87,11 +97,7 @@ void	my_socket::init_socket()
 	poll_fds.back().events = POLLIN;
 	while (1)
 	{
-		check = poll((struct pollfd *) &(this->poll_fds[0]), this->poll_fds.size(), 500);
-		if(check > 0)
-			this->scan_fds();
 		this->read_fds();
-		//std::cout << "Check = " << check << std::endl;
 		print_msg_queue();
 	}
 }
