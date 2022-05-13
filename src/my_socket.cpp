@@ -2,24 +2,35 @@
 
 //Tis function return(std::string) the first msg in the queue and delete
 //this element. If the queue is empty return NULL
-std::string	my_socket::get_msg()
+void	my_socket::print_msg_queue()
 {
 	std::string	aux;
 	
-	if(msg_queue.empty())
-		return NULL;
-	aux = this->msg_queue.front();
-	this->msg_queue.pop();
-	return aux;
+	while (this->msg_queue.empty() != 1)
+	{
+		aux = this->msg_queue.front();
+		this->msg_queue.pop();
+		std::cout << aux << std::endl;
+	}
 }
 
 //This funcition read the fds in poll_fds ready to read and add the sring
 //to msg_queue
 void	my_socket::read_fds()
 {
-	char	buff[1024] = {0};
+	char						buff[1024];
+	int							read_len;
 	std::vector<int>::iterator	it;
 
+	for(it = this->fds_open_read.begin(); it != this->fds_open_read.end(); it++)
+	{
+		bzero(buff, 1023);
+		read_len = read(*it, buff, 1024);
+		if(read_len > 0)
+			this->msg_queue.push(std::string(buff));
+	}		
+	
+/*
 	for(it = this->fds_open_read.begin(); it != this->fds_open_read.end(); it++)
 	{
 		//if((it->revents & POLLIN) && (it->fd != this->socket_fd))
@@ -28,6 +39,7 @@ void	my_socket::read_fds()
 			this->msg_queue.push(std::string(buff));
 		//}
 	}
+*/
 }
 
 void	my_socket::scan_fds()
@@ -44,7 +56,7 @@ void	my_socket::scan_fds()
 
 				new_fd = accept(this->socket_fd, (struct sockaddr *) &(this->data_socket), 
 						(socklen_t *) &(this->data_socket_len));
-				std::cout << "NEW FD " << new_fd << std::endl;
+				//this->poll_fds.push_back(new_fd);
 				fds_open_read.push_back(new_fd);
 		//	}
 		}
@@ -62,6 +74,7 @@ my_socket::my_socket(const int port)
 void	my_socket::init_socket()
 {
 	int	enable; //need to enable setsockop values
+	int	check;
 
 	enable = 1; //need to enable setsockopt values
 	this->socket_fd = socket(AF_INET, SOCK_STREAM, 0);
@@ -74,9 +87,11 @@ void	my_socket::init_socket()
 	poll_fds.back().events = POLLIN;
 	while (1)
 	{
-		poll((struct pollfd *) &(this->poll_fds[0]), this->poll_fds.size(), 50000);
-		this->scan_fds();
+		check = poll((struct pollfd *) &(this->poll_fds[0]), this->poll_fds.size(), 500);
+		if(check > 0)
+			this->scan_fds();
 		this->read_fds();
-		std::cout << get_msg();
+		//std::cout << "Check = " << check << std::endl;
+		print_msg_queue();
 	}
 }

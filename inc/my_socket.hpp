@@ -31,7 +31,8 @@ class	my_socket
 		my_socket(const int port);
 	//	~socket();
 		void		init_socket();
-		std::string	get_msg();
+	//	std::string	get_msg();
+		void		print_msg_queue();
 };
 
 #endif
