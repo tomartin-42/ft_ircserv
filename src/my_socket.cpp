@@ -76,7 +76,7 @@ int	my_socket::load_in_conections()
 {
 	int	check;
 
-	check = poll((struct pollfd *) &(this->poll_fds[0]), this->poll_fds.size(), 10000);
+	check = poll((struct pollfd *) &(this->poll_fds[0]), this->poll_fds.size(), 100);
 	if(check > 0)
 		this->scan_fds();
 	return check;
