@@ -66,17 +66,18 @@ my_socket::my_socket(const int port)
 	this->data_socket.sin_addr.s_addr = INADDR_ANY;
 	this->data_socket.sin_port = htons(port);
 	this->data_socket_len = sizeof(data_socket);
+	this->port = port;
 }
 
 //When call this finction, if there are petitions POLLIN in my_socket,
 //load in fds_open_read(vector), if not there POLLIN petitions
 //do nothing. This function return a int: -1 if error, 0 if not have POLLIN petitions
-//if there ar POLLIN petitions return the number petitions
+//if there ar POLLIN petitions return the numbers petitions
 int	my_socket::load_in_conections()
 {
 	int	check;
 
-	check = poll((struct pollfd *) &(this->poll_fds[0]), this->poll_fds.size(), 100);
+	check = poll((struct pollfd *) &(this->poll_fds[0]), this->poll_fds.size(), 500);
 	if(check > 0)
 		this->scan_fds();
 	return check;
@@ -95,9 +96,6 @@ void	my_socket::init_socket()
 	poll_fds.push_back(pollfd());
 	poll_fds.back().fd = this->socket_fd;
 	poll_fds.back().events = POLLIN;
-	while (1)
-	{
-		this->read_fds();
-		print_msg_queue();
-	}
 }
+
+int		get_port() {return this->port} // geter port

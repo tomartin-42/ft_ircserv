@@ -18,6 +18,7 @@
 class	my_socket
 {
 	private:
+		int						port;			//Port when the server lisen	
 		int						socket_fd;
 		std::vector<pollfd>		poll_fds;
 		struct sockaddr_in		data_socket;
@@ -25,15 +26,17 @@ class	my_socket
 		std::queue<std::string>	msg_queue;
 		std::vector<int>		fds_open_read;
 
-		void					scan_fds();
-		void					read_fds();
 
 	public:
 		my_socket(const int port);				//Constructor
 		void		init_socket();
-		std::string	get_msg();
 		void		print_msg_queue();
 		int			load_in_conections();
+		void		scan_fds();
+		void		read_fds();
+		std::string	get_msg();
+		int			get_port();
+		
 };
 
 #endif
