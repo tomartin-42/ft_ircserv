@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   my_socket.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/15 16:56:05 by tomartin          #+#    #+#             */
+/*   Updated: 2022/05/15 19:46:18 by tomartin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "my_socket.hpp"
 
 //Tis function return(std::string) the first msg in the queue and delete
@@ -30,14 +42,14 @@ void	my_socket::print_msg_queue()
 //to msg_queue
 void	my_socket::read_fds()
 {
-	char						buff[1024];
+	char						buff[512];
 	int							read_len;
 	std::vector<int>::iterator	it;
 
-	for(it = this->fds_open_read.begin(); it != this->fds_open_read.end(); it++)
+	for(it = this->fds_connect_ready.begin(); it != this->fds_connect_ready.end(); it++)
 	{
-		bzero(buff, 1023);
-		read_len = recv(*it, buff, 1024, MSG_DONTWAIT);
+		memset(buff, 0, 512);
+		read_len = recv(*it, buff, 512, MSG_DONTWAIT);
 		if(read_len > 0)
 			this->msg_queue.push(std::string(buff));
 	}		
@@ -55,7 +67,8 @@ void	my_socket::scan_fds()
 			
 			new_fd = accept(this->socket_fd, (struct sockaddr *) &(this->data_socket), 
 					(socklen_t *) &(this->data_socket_len));
-			fds_open_read.push_back(new_fd);
+			fcntl(new_fd, F_SETFL, O_NONBLOCK);
+			fds_connect_ready.push_back(new_fd);
 		}
 	}
 }
@@ -70,7 +83,7 @@ my_socket::my_socket(const int port)
 }
 
 //When call this finction, if there are petitions POLLIN in my_socket,
-//load in fds_open_read(vector), if not there POLLIN petitions
+//load in fds_connect_ready(vector), if not there POLLIN petitions
 //do nothing. This function return a int: -1 if error, 0 if not have POLLIN petitions
 //if there ar POLLIN petitions return the numbers petitions
 int	my_socket::load_in_conections()
@@ -98,4 +111,7 @@ void	my_socket::init_socket()
 	poll_fds.back().events = POLLIN;
 }
 
-int		get_port() {return this->port} // geter port
+int		my_socket::get_port() const // geter port
+{
+	return (this->port);
+}

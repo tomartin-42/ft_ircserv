@@ -6,7 +6,7 @@
 #    By: tomartin <tomartin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/04 19:11:19 by tomartin          #+#    #+#              #
-#    Updated: 2022/05/08 17:53:36 by tomartin         ###   ########.fr        #
+#    Updated: 2022/05/15 17:29:38 by tomartin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ OBJ_DIR = obj/
 SRC_DIR = src/
 
 # Source files and includes
-SRC_FILES = main.cpp my_socket.cpp
+SRC_FILES = main.cpp my_socket.cpp sending.cpp
 
 # Objs
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))	
