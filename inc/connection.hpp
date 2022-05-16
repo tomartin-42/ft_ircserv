@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   conections.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/15 17:35:01 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/16 19:39:54 by tomartin         ###   ########.fr       */
+/*   Created: 2022/05/16 18:13:50 by tomartin          #+#    #+#             */
+/*   Updated: 2022/05/16 20:04:45 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "my_socket.hpp"
-#include "sending.hpp"
-#include <iostream>
+#ifndef _CONNECTION_HPP_
+# define _CONNECTION_HPP_
 
-int main(void)
+#include <poll.h>
+
+class connection
 {
-	std::string	msg("SERVER test.Ateam.es 1 : Experimental server");
-	my_socket new_socket(4242);
-	sending		test;
+	private:
+		int		fd;
+		pollfd	poll_fd;
 
-	new_socket.init_socket();
-	while(1)
-	{
-		new_socket.load_in_conections();
-		new_socket.read_fds();
-		new_socket.print_msg_queue();
-	}
-}
+	public:
+		void		set_poll_fd_fd(int fd const);
+		void		set_poll_fd_events(short event const);
+		const short	get_poll_fd_revents();
+
+};
+
+#endif

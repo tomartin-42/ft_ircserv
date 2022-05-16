@@ -6,11 +6,25 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:56:05 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/15 19:46:18 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:31:06 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "my_socket.hpp"
+
+my_socket::my_socket(const int port)
+{
+	this->data_socket.sin_family = AF_INET;
+	this->data_socket.sin_addr.s_addr = INADDR_ANY;
+	this->data_socket.sin_port = htons(port);
+	this->data_socket_len = sizeof(data_socket);
+	this->port = port;
+}
+
+//my_socket::~my_soket()
+//{
+//	close(this->socket_fd);
+//}
 
 //Tis function return(std::string) the first msg in the queue and delete
 //this element. If the queue is empty return NULL
@@ -50,36 +64,23 @@ void	my_socket::read_fds()
 	{
 		memset(buff, 0, 512);
 		read_len = recv(*it, buff, 512, MSG_DONTWAIT);
+		for(int i = 0; i < 512; i++)
+			printf("%i,%c ", buff[i], buff[i]);
+		printf("==========================================================\n");
 		if(read_len > 0)
 			this->msg_queue.push(std::string(buff));
 	}		
 }
 
-void	my_socket::scan_fds()
+void	my_socket::accept_new_connect()
 {
-	std::vector<pollfd>::iterator	it;
-
-	for(it = this->poll_fds.begin(); it != this->poll_fds.end(); it++)
-	{
-		if(it->revents & POLLIN)
-		{
-			int	new_fd;
+	int	new_fd;
 			
-			new_fd = accept(this->socket_fd, (struct sockaddr *) &(this->data_socket), 
-					(socklen_t *) &(this->data_socket_len));
-			fcntl(new_fd, F_SETFL, O_NONBLOCK);
-			fds_connect_ready.push_back(new_fd);
-		}
-	}
-}
-
-my_socket::my_socket(const int port)
-{
-	this->data_socket.sin_family = AF_INET;
-	this->data_socket.sin_addr.s_addr = INADDR_ANY;
-	this->data_socket.sin_port = htons(port);
-	this->data_socket_len = sizeof(data_socket);
-	this->port = port;
+	new_fd = accept(this->socket_fd, (struct sockaddr *) &(this->data_socket), 
+			(socklen_t *) &(this->data_socket_len));
+	fcntl(new_fd, F_SETFL, O_NONBLOCK);
+	std::cout << "HOLA " << new_fd << std::endl;
+	fds_connect_ready.push_back(new_fd);
 }
 
 //When call this finction, if there are petitions POLLIN in my_socket,
@@ -90,9 +91,9 @@ int	my_socket::load_in_conections()
 {
 	int	check;
 
-	check = poll((struct pollfd *) &(this->poll_fds[0]), this->poll_fds.size(), 500);
+	check = poll(&(this->poll_fd), 1, 500);
 	if(check > 0)
-		this->scan_fds();
+		this->accept_new_connect();
 	return check;
 }
 
@@ -106,9 +107,8 @@ void	my_socket::init_socket()
 	fcntl(this->socket_fd, F_SETFL, O_NONBLOCK);
 	bind(this->socket_fd, (struct sockaddr *) &(this->data_socket), sizeof(data_socket));
 	listen(this->socket_fd, 10);
-	poll_fds.push_back(pollfd());
-	poll_fds.back().fd = this->socket_fd;
-	poll_fds.back().events = POLLIN;
+	poll_fd.fd = this->socket_fd;
+	poll_fd.events = POLLIN;
 }
 
 int		my_socket::get_port() const // geter port

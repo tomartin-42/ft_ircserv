@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   connection.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/15 17:35:01 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/16 19:39:54 by tomartin         ###   ########.fr       */
+/*   Created: 2022/05/16 19:40:09 by tomartin          #+#    #+#             */
+/*   Updated: 2022/05/16 20:15:12 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "my_socket.hpp"
-#include "sending.hpp"
-#include <iostream>
+#include "connection.hpp"
 
-int main(void)
+void	connection::set_poll_fd_fd(int fd const)
 {
-	std::string	msg("SERVER test.Ateam.es 1 : Experimental server");
-	my_socket new_socket(4242);
-	sending		test;
+	this->poll_fd.fd = fd;
+}
 
-	new_socket.init_socket();
-	while(1)
-	{
-		new_socket.load_in_conections();
-		new_socket.read_fds();
-		new_socket.print_msg_queue();
-	}
+void	connection::set_poll_fd_events(short event const)
+{
+	this->poll_fd.events = event;
+}
+
+const short	connection::get_poll_fd_revent()
+{
+	return this->poll_fd.revents;
 }

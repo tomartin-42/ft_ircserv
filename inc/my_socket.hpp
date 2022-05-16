@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:56:00 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/15 19:32:02 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:16:22 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <string>
 #include <arpa/inet.h>
 #include <fcntl.h>								// To fcntl function
+#include <unistd.h>
 #include <sys/socket.h>							// To socket
 #include <netinet/in.h>							// To struct sockaddr_in
 #include <sys/types.h>
@@ -32,19 +33,22 @@ class	my_socket
 	private:
 		int						port;			//Port when the server lisen	
 		int						socket_fd;
-		std::vector<pollfd>		poll_fds;
+		pollfd					poll_fd;
 		struct sockaddr_in		data_socket;
 		int						data_socket_len; //Need to accept function
 		std::queue<std::string>	msg_queue;
 		std::vector<int>		fds_connect_ready;
+
+		void		accept_new_connect();
 		my_socket();
 
 	public:
 		my_socket(const int port);				//Constructor
+//		-my_socket();
+
 		void		init_socket();
 		void		print_msg_queue();
 		int			load_in_conections();
-		void		scan_fds();
 		void		read_fds();
 		std::string	get_msg();
 		int			get_port() const;
