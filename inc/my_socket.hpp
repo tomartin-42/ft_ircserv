@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:56:00 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/16 20:16:22 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:29:00 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ class	my_socket
 
 	public:
 		my_socket(const int port);				//Constructor
-//		-my_socket();
+		~my_socket();
 
 		void		init_socket();
 		void		print_msg_queue();

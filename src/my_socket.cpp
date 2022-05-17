@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:56:05 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/16 20:31:06 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:28:53 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ my_socket::my_socket(const int port)
 	this->port = port;
 }
 
-//my_socket::~my_soket()
-//{
-//	close(this->socket_fd);
-//}
+my_socket::~my_socket()
+{
+	close(this->socket_fd);
+}
 
 //Tis function return(std::string) the first msg in the queue and delete
 //this element. If the queue is empty return NULL
@@ -65,8 +65,8 @@ void	my_socket::read_fds()
 		memset(buff, 0, 512);
 		read_len = recv(*it, buff, 512, MSG_DONTWAIT);
 		for(int i = 0; i < 512; i++)
-			printf("%i,%c ", buff[i], buff[i]);
-		printf("==========================================================\n");
+			printf("[%i,%c]", buff[i], buff[i]);
+		printf("\n==========================================================\n");
 		if(read_len > 0)
 			this->msg_queue.push(std::string(buff));
 	}		
