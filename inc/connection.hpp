@@ -16,6 +16,8 @@
 #include <poll.h>
 #include <ctime>
 #include <string>
+#include <sys/socket.h>
+#include <sys/types.h>
 
 class connection
 {
@@ -33,6 +35,8 @@ class connection
 		int			get_fd();
 		void		set_time();
 		std::string	get_time();
+		ssize_t		send_msg(const std::string str);
+		std::string	recv_msg();
 };
 
 #endif

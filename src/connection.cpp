@@ -47,3 +47,18 @@ std::string	connection::get_time()
 	time(&c_time);
 	return std::string(ctime(&c_time));
 }
+
+ssize_t connection::send_msg(std::string str)
+{
+	return send(this->fd, &str[0], str.size(), MSG_DONTWAIT);
+}
+
+std::string	connection::recv_msg()
+{
+	char	buff[512];
+
+	recv(this->fd, &buff, 512, MSG_DONTWAIT);
+	return std::string(buff);
+}
+
+
