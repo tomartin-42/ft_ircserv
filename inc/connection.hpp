@@ -22,7 +22,7 @@ class connection
 	private:
 		const int	fd;
 		pollfd		poll_fd;
-		struct tm	c_time;
+		time_t		c_time;
 
 	public:
 		connection(int in_fd);

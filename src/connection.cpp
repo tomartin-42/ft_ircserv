@@ -44,11 +44,6 @@ void connection::set_time()
 
 std::string	connection::get_time()
 {
-	struct tm	aux_tm;
-	char		buff[80];
-
-	time(&this->c_time);
-	aux_tm = localtime(&this->c_time);
-	strftime(buff, 80, "%x %X", aux_tm);
-	return std::string(buff);
+	time(&c_time);
+	return std::string(ctime(&c_time));
 }

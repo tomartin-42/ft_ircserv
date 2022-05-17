@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "my_socket.hpp"
+#include <cstdio>
 
 my_socket::my_socket(const int port)
 {
@@ -64,9 +65,9 @@ void	my_socket::read_fds()
 	{
 		memset(buff, 0, 512);
 		read_len = recv(*it, buff, 512, MSG_DONTWAIT);
-		for(int i = 0; i < 512; i++)
-			printf("[%i,%c]", buff[i], buff[i]);
-		printf("\n==========================================================\n");
+	//	for(int i = 0; i < 512; i++)
+	//		printf("[%i,%c]", buff[i], buff[i]);
+	//	printf("\n==========================================================\n");
 		if(read_len > 0)
 			this->msg_queue.push(std::string(buff));
 	}		
