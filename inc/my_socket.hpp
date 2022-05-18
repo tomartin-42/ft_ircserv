@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:56:00 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/17 10:29:00 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/18 09:58:37 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 #include <sys/types.h>
 #include <poll.h>								// To poll
 #include <fcntl.h>								// To fcntl
+#include "connection.hpp"
 
 class	my_socket
 {
@@ -37,9 +38,9 @@ class	my_socket
 		struct sockaddr_in		data_socket;
 		int						data_socket_len; //Need to accept function
 		std::queue<std::string>	msg_queue;
-		std::vector<int>		fds_connect_ready;
+		std::queue<int>			fds_connect_ready;
 
-		void		accept_new_connect();
+		void					accept_new_connect();
 		my_socket();
 
 	public:
@@ -49,9 +50,10 @@ class	my_socket
 		void		init_socket();
 		void		print_msg_queue();
 		int			load_in_conections();
-		void		read_fds();
 		std::string	get_msg();
 		int			get_port() const;
+		connection	extract_new_connection();
+		bool		pending_connection();
 };
 
 #endif

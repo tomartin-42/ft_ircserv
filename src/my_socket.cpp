@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:56:05 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/17 10:28:53 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/18 09:59:51 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,26 +53,6 @@ void	my_socket::print_msg_queue()
 	}
 }
 
-//This funcition read the fds in poll_fds ready to read and add the sring
-//to msg_queue
-void	my_socket::read_fds()
-{
-	char						buff[512];
-	int							read_len;
-	std::vector<int>::iterator	it;
-
-	for(it = this->fds_connect_ready.begin(); it != this->fds_connect_ready.end(); it++)
-	{
-		memset(buff, 0, 512);
-		read_len = recv(*it, buff, 512, MSG_DONTWAIT);
-	//	for(int i = 0; i < 512; i++)
-	//		printf("[%i,%c]", buff[i], buff[i]);
-	//	printf("\n==========================================================\n");
-		if(read_len > 0)
-			this->msg_queue.push(std::string(buff));
-	}		
-}
-
 void	my_socket::accept_new_connect()
 {
 	int	new_fd;
@@ -80,8 +60,7 @@ void	my_socket::accept_new_connect()
 	new_fd = accept(this->socket_fd, (struct sockaddr *) &(this->data_socket), 
 			(socklen_t *) &(this->data_socket_len));
 	fcntl(new_fd, F_SETFL, O_NONBLOCK);
-	std::cout << "HOLA " << new_fd << std::endl;
-	fds_connect_ready.push_back(new_fd);
+	fds_connect_ready.push(new_fd);
 }
 
 //When call this finction, if there are petitions POLLIN in my_socket,
@@ -115,4 +94,18 @@ void	my_socket::init_socket()
 int		my_socket::get_port() const // geter port
 {
 	return (this->port);
+}
+
+connection	my_socket::extract_new_connection()
+{
+	connection	aux(this->fds_connect_ready.front());
+	this->fds_connect_ready.pop();
+	return (aux);
+}
+
+bool	my_socket::pending_connection()
+{
+	if(!this->fds_connect_ready.empty())
+		return true;
+	return false;
 }

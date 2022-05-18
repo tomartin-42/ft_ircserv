@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sending.cpp                                        :+:      :+:    :+:   */
+/*   connect_orquestation.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/15 17:17:47 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/18 09:29:12 by tomartin         ###   ########.fr       */
+/*   Created: 2022/05/18 08:39:20 by tomartin          #+#    #+#             */
+/*   Updated: 2022/05/18 09:34:07 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sending.hpp"
+#ifndef _CONNECT_ORQUESTATION_HPP_
+# define _CONNECT_ORQUESTATION_HPP_
 
-int	sending::send_singel_msg(int fd, std::string msg)
+#include "connection.hpp"
+#include <vector>
+
+class connect_orquestation
 {
-	pollfd	pollset;
-	int		check;
+	private:
+		std::vector<connection>	l_connections;
 
-	pollset.fd = fd;
-	pollset.events = POLLOUT;
-	check = poll(&pollset, 1, 500);
-	if(check > 0)
-		send(fd, (char *)&(msg[0]), msg.size(), MSG_DONTWAIT);
-	return 0;
-}			
+	public:
+		void	add_connection(connection &new_connect);
+
+};
+
+#endif

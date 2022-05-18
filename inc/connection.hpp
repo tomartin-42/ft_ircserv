@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:13:50 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/17 11:12:24 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/18 08:38:03 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <string>
 #include <sys/socket.h>
 #include <sys/types.h>
+#include "user.hpp"
 
 class connection
 {
@@ -25,6 +26,7 @@ class connection
 		const int	fd;
 		pollfd		poll_fd;
 		time_t		c_time;
+		user		c_user;
 
 	public:
 		connection(int in_fd);

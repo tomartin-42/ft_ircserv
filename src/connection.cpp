@@ -6,13 +6,13 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:40:09 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/17 11:14:06 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/18 08:37:52 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "connection.hpp"
 
-connection::connection(int in_fd) : fd(in_fd)
+connection::connection(int in_fd) : fd(in_fd) , c_user()
 {
 	this->poll_fd.fd = in_fd;
 }
@@ -39,6 +39,7 @@ int	connection::get_fd()
 
 void connection::set_time()
 {
+
 	time(&this->c_time);
 }
 
