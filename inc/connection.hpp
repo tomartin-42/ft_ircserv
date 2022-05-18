@@ -27,8 +27,8 @@ class connection
 		pollfd					poll_fd;
 		time_t					c_time;
 		user					c_user;
-		std::queue<std::string> msg_recv;	
-		std::queue<std::string> msg_send;	
+		std::queue<std::string> msg_recv;	//recv msg queue
+		std::queue<std::string> msg_send;	//to send msg queue
 
 		void		set_poll_fd_events(const short event);
 
@@ -38,7 +38,7 @@ class connection
 		void		set_poll_fd_fd(const int fd);
 		short		get_poll_fd_revents();
 		int			get_fd();
-		pollfd&		get_poll_fd();
+		pollfd*		get_poll_fd();
 		void		set_time();
 		std::string	get_time();
 		void		ready_to_lisen();

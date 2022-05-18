@@ -17,12 +17,13 @@
 #include "connection.hpp"
 #include <vector>
 #include <poll.h>
+#include <iostream>
 
 class connect_orquestation
 {
 	private:
 		std::vector<connection>	l_connections;
-		std::queue<&pollfd>		ref_pollfd;
+		std::vector<pollfd *>	ref_pollfd;
 
 	public:
 		void	add_connection(connection &new_connect);

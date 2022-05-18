@@ -50,7 +50,14 @@ std::string	connection::get_time()
 
 ssize_t connection::send_msg(std::string str)
 {
-	return send(this->fd, &str[0], str.size(), MSG_DONTWAIT);
+	ssize_t	aux = 0;
+	
+	if (!msg_send.empty())
+	{
+		aux = send(this->fd, &str[0], 512, MSG_DONTWAIT);
+		this->msg_send.pop();
+	}
+	return aux;
 }
 
 std::string	connection::recv_msg()
@@ -58,6 +65,7 @@ std::string	connection::recv_msg()
 	char	buff[512];
 
 	recv(this->fd, &buff, 512, MSG_DONTWAIT);
+	this->msg_recv.push(std::string(buff));
 	return std::string(buff);
 }
 
@@ -71,7 +79,7 @@ void	connection::ready_to_send()
 	this->set_poll_fd_events(POLLOUT);
 }
 
-pollfd&	connection::get_poll_fd()
+pollfd*	connection::get_poll_fd()
 {
-	return &(this->poll_fd);
+	return (&this->poll_fd);
 }

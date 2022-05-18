@@ -12,17 +12,24 @@
 
 #include "connect_orquestation.hpp"
 
+//Add connection class to vector l_connections
+//Need to gestion in and out connections
 void	connect_orquestation::add_connection(connection &new_connect)
 {
 	this->l_connections.push_back(new_connect);
 }
 
+//This function in responsible to check event in the 
+//socket, them you can gestion comunication (send or recv)
+//from socket
 int		connect_orquestation::poll_connections()
 {
 	this->init_ref_pollfd();
-	return (poll(&(this->ref_pollfd), l_connections.size(), 0));
+	return (poll(this->ref_pollfd[0], ref_pollfd.size(), 0));
 }
 
+//This function check all of the fds socket and if 
+//a socket is ready to lisen, send it a msg
 void	connect_orquestation::search_to_send()
 {
 	std::vector<connection>::iterator	it;
@@ -30,11 +37,13 @@ void	connect_orquestation::search_to_send()
 	for(it = this->l_connections.begin(); it != this->l_connections.end(); it++)
 	{
 		if(it->get_poll_fd_revents() == POLLOUT)
-			;
+			std::cout << "hola" << std::endl;
 			//send_msg_queue
 	}
 }
 
+//This function check all of the fds socket and if 
+//a socket is ready to recv, recv it a msg
 void	connect_orquestation::search_to_recv()
 {
 	std::vector<connection>::iterator	it;
@@ -42,16 +51,19 @@ void	connect_orquestation::search_to_recv()
 	for(it = this->l_connections.begin(); it != this->l_connections.end(); it++)
 	{
 		if(it->get_poll_fd_revents() == POLLIN)
-			;
+			std::cout << "hola" << std::endl;
 			//recv_msg_queue
 	}
 }
 
+//Need to create a vector with all of pollfd struct to
+//gestion the event comunication
+//The datas of vector receive from connection class pollfd
 void	connect_orquestation::init_ref_pollfd()
 {
 	std::vector<connection>::iterator	it;
 
-	for (it = l_connections.begin(); it != l_connections.end(); it++)
-		ref_pollfd.push(it->get_poll_fd())
+	for (it = this->l_connections.begin(); it != this->l_connections.end(); it++)
+		ref_pollfd.push_back(it->get_poll_fd());
 }
 
