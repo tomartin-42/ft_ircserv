@@ -83,3 +83,23 @@ pollfd*	connection::get_poll_fd()
 {
 	return (&this->poll_fd);
 }
+
+void	connection::add_log(bool sor, std::string msg)
+{
+	std::string	aux;
+
+	if(sor == 0)
+		aux = this->get_time() + " SEND " + msg;
+	else if(sor == 1)
+		aux= this->get_time() + " RECV " + msg; 
+	this->log.push_back(aux);
+}
+
+void connection::print_log()
+{
+	std::vector<std::string>::iterator	it;
+
+	for(it = this->log.begin(); it != this->log.end(); it++)
+		std::cout << *it << std::endl;
+}
+	

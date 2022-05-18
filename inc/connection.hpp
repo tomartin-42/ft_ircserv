@@ -16,6 +16,7 @@
 #include <poll.h>
 #include <ctime>
 #include <string>
+#include <iostream>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include "user.hpp"
@@ -29,8 +30,10 @@ class connection
 		user					c_user;
 		std::queue<std::string> msg_recv;	//recv msg queue
 		std::queue<std::string> msg_send;	//to send msg queue
+		std::vector<std::string> log;		//comunication log
 
 		void		set_poll_fd_events(const short event);
+		void		add_log(bool sor, std::string msg);
 
 	public:
 		connection(int in_fd);
@@ -45,6 +48,7 @@ class connection
 		void		ready_to_send();
 		ssize_t		send_msg(const std::string str);
 		std::string	recv_msg();
+		void		print_log();
 };
 
 #endif
