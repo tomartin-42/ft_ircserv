@@ -6,7 +6,7 @@
 #    By: tomartin <tomartin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/04 19:11:19 by tomartin          #+#    #+#              #
-#    Updated: 2022/05/18 08:16:10 by tomartin         ###   ########.fr        #
+#    Updated: 2022/05/18 10:03:45 by tomartin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ SRC_DIR = src/
 
 # Source files and includes
 SRC_FILES = main.cpp my_socket.cpp sending.cpp connection.cpp \
-			user.cpp
+			user.cpp connect_orquestation.cpp
 
 # Objs
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))	

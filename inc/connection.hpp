@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:13:50 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/18 08:38:03 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/18 13:16:54 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,25 @@
 class connection
 {
 	private:
-		const int	fd;
-		pollfd		poll_fd;
-		time_t		c_time;
-		user		c_user;
+		const int				fd;
+		pollfd					poll_fd;
+		time_t					c_time;
+		user					c_user;
+		std::queue<std::string> msg_recv;	
+		std::queue<std::string> msg_send;	
+
+		void		set_poll_fd_events(const short event);
 
 	public:
 		connection(int in_fd);
 
 		void		set_poll_fd_fd(const int fd);
-		void		set_poll_fd_events(const short event);
 		short		get_poll_fd_revents();
 		int			get_fd();
 		void		set_time();
 		std::string	get_time();
+		void		ready_to_lisen();
+		void		ready_to_send();
 		ssize_t		send_msg(const std::string str);
 		std::string	recv_msg();
 };

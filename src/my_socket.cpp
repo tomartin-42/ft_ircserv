@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:56:05 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/18 09:59:51 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/18 10:08:51 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	my_socket::accept_new_connect()
 //load in fds_connect_ready(vector), if not there POLLIN petitions
 //do nothing. This function return a int: -1 if error, 0 if not have POLLIN petitions
 //if there ar POLLIN petitions return the numbers petitions
-int	my_socket::load_in_conections()
+int	my_socket::load_in_connections()
 {
 	int	check;
 

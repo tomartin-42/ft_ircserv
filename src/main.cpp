@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 17:35:01 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/18 10:00:34 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/18 10:09:06 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ int main(void)
 	new_socket.init_socket();
 	while(1)
 	{
-		if(new_socket.pending_connection())
+		new_socket.load_in_connections();
+		while(new_socket.pending_connection())
+		{
 			connection in_connect(new_socket.extract_new_connection());
+			connect_orquest.add_connection(in_connect);
+		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:56:00 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/18 09:58:37 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/18 10:09:03 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ class	my_socket
 
 		void		init_socket();
 		void		print_msg_queue();
-		int			load_in_conections();
+		int			load_in_connections();
 		std::string	get_msg();
 		int			get_port() const;
 		connection	extract_new_connection();

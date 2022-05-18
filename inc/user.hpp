@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 07:56:23 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/18 08:39:02 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/18 11:44:51 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 class user
 {
 	private:
+		//int						us_id;
 		std::string				nick;
 		std::string 			name;
 		int						type;
