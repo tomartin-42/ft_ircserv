@@ -100,6 +100,6 @@ void connection::print_log()
 	std::vector<std::string>::iterator	it;
 
 	for(it = this->log.begin(); it != this->log.end(); it++)
-		std::cout << *it << std::endl;
+		std::cout << this->fd << " " << *it << std::endl;
 }
 	
