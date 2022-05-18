@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:13:50 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/18 13:16:54 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/18 13:52:06 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class connection
 		void		set_poll_fd_fd(const int fd);
 		short		get_poll_fd_revents();
 		int			get_fd();
+		pollfd&		get_poll_fd();
 		void		set_time();
 		std::string	get_time();
 		void		ready_to_lisen();

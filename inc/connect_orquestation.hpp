@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 08:39:20 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/18 13:16:46 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/18 13:52:03 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@
 class connect_orquestation
 {
 	private:
-		pollfd					poll_fd[MAX_CONNECTIONS];
 		std::vector<connection>	l_connections;
+		std::queue<&pollfd>		ref_pollfd;
 
 	public:
 		void	add_connection(connection &new_connect);
 		int		poll_connections();
 		void	search_to_send();
 		void	search_to_recv();
+		void	init_ref_pollfd();
 };
 
 #endif

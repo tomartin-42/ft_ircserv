@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 08:40:42 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/18 13:16:49 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/18 13:52:09 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	connect_orquestation::add_connection(connection &new_connect)
 
 int		connect_orquestation::poll_connections()
 {
-	return (poll(&(this->l_connections.poll_fd), l_connections.size(), 0));
+	this->init_ref_pollfd();
+	return (poll(&(this->ref_pollfd), l_connections.size(), 0));
 }
 
 void	connect_orquestation::search_to_send()
@@ -45,3 +46,12 @@ void	connect_orquestation::search_to_recv()
 			//recv_msg_queue
 	}
 }
+
+void	connect_orquestation::init_ref_pollfd()
+{
+	std::vector<connection>::iterator	it;
+
+	for (it = l_connections.begin(); it != l_connections.end(); it++)
+		ref_pollfd.push(it->get_poll_fd())
+}
+
