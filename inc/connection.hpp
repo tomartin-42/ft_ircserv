@@ -19,6 +19,7 @@
 #include <iostream>
 #include <sys/socket.h>
 #include <sys/types.h>
+#include "msg.hpp"
 #include "user.hpp"
 
 class connection
@@ -28,8 +29,10 @@ class connection
 		pollfd					poll_fd;
 		time_t					c_time;
 		user					c_user;
-		std::queue<std::string> msg_recv;	//recv msg queue
-		std::queue<std::string> msg_send;	//to send msg queue
+		msg						msg_send;
+		msg						msg_recv;
+		//std::queue<std::string> msg_recv;	//recv msg queue
+		//std::queue<std::string> msg_send;	//to send msg queue
 		std::vector<std::string> log;		//comunication log
 
 		void		set_poll_fd_events(const short event);
@@ -49,8 +52,8 @@ class connection
 		ssize_t		send_msg();
 		std::string	recv_msg();
 		void		print_log();
-		void		print_msg_recv();
-		void		print_msg_send();
+		void		print_msg_recv(std::queue<std::string> print_q);
+		void		print_msg_send(std::queue<std::string> print_q);
 };
 
 #endif

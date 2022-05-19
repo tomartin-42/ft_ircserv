@@ -39,7 +39,7 @@ SRC_DIR = src/
 
 # Source files and includes
 SRC_FILES = main.cpp my_socket.cpp sending.cpp connection.cpp \
-			user.cpp connect_orquestation.cpp
+			user.cpp connect_orquestation.cpp msg.cpp
 
 # Objs
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))	

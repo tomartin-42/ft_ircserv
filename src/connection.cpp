@@ -52,10 +52,9 @@ ssize_t connection::send_msg()
 {
 	ssize_t	aux = 0;
 	
-	if (!msg_send.empty())
+	if (!msg_send.check_if_empty())
 	{
-		aux = send(this->fd, &(this->msg_send.front()), 512, MSG_DONTWAIT);
-		this->msg_send.pop();
+		aux = send(this->fd, (this->msg_send.extract_msg_to_char()), 512, MSG_DONTWAIT);
 	}
 	return aux;
 }
@@ -65,7 +64,7 @@ std::string	connection::recv_msg()
 	char	buff[512];
 
 	recv(this->fd, &buff, 512, MSG_DONTWAIT);
-	this->msg_recv.push(std::string(buff));
+	this->msg_recv.add_msg(buff);
 	return std::string(buff);
 }
 
@@ -103,9 +102,9 @@ void connection::print_log()
 		std::cout << this->fd << " " << *it << std::endl;
 }
 	
-void	connection::print_msg_recv()
+void	connection::print_msg_recv(std::queue<std::string> print_q)
 {
-	std::queue<std::string>	aux(this->msg_recv);
+	std::queue<std::string>	aux(print_q);
 	
 	std::cout << "RECV QUEUE" << std::endl;
 	while(!aux.empty())
@@ -116,9 +115,9 @@ void	connection::print_msg_recv()
 	std::cout << "=============================================" << std::endl;
 }
 
-void	connection::print_msg_send()
+void	connection::print_msg_send(std::queue<std::string> print_q)
 {
-	std::queue<std::string>	aux(this->msg_send);
+	std::queue<std::string>	aux(print_q);
 	
 	std::cout << "SEND QUEUE" << std::endl;
 	while(!aux.empty())
