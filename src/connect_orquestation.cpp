@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 08:40:42 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/18 13:52:09 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/19 12:26:30 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ void	connect_orquestation::search_to_send()
 	for(it = this->l_connections.begin(); it != this->l_connections.end(); it++)
 	{
 		if(it->get_poll_fd_revents() == POLLOUT)
-			std::cout << "hola" << std::endl;
-			//send_msg_queue
+		{
+			it->send_msg();//send_msg_queue
+		}
 	}
 }
 
@@ -51,8 +52,9 @@ void	connect_orquestation::search_to_recv()
 	for(it = this->l_connections.begin(); it != this->l_connections.end(); it++)
 	{
 		if(it->get_poll_fd_revents() == POLLIN)
-			std::cout << "hola" << std::endl;
-			//recv_msg_queue
+		{
+			it->recv_msg();//recv_msg_queue
+		}
 	}
 }
 

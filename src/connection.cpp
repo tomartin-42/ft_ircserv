@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:40:09 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/18 13:52:11 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/19 12:24:57 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ std::string	connection::get_time()
 	return std::string(ctime(&c_time));
 }
 
-ssize_t connection::send_msg(std::string str)
+ssize_t connection::send_msg()
 {
 	ssize_t	aux = 0;
 	
 	if (!msg_send.empty())
 	{
-		aux = send(this->fd, &str[0], 512, MSG_DONTWAIT);
+		aux = send(this->fd, &(this->msg_send.front()), 512, MSG_DONTWAIT);
 		this->msg_send.pop();
 	}
 	return aux;
@@ -103,3 +103,28 @@ void connection::print_log()
 		std::cout << this->fd << " " << *it << std::endl;
 }
 	
+void	connection::print_msg_recv()
+{
+	std::queue<std::string>	aux(this->msg_recv);
+	
+	std::cout << "RECV QUEUE" << std::endl;
+	while(!aux.empty())
+	{
+		std::cout << aux.front() << std::endl;
+		aux.pop();
+	}
+	std::cout << "=============================================" << std::endl;
+}
+
+void	connection::print_msg_send()
+{
+	std::queue<std::string>	aux(this->msg_send);
+	
+	std::cout << "SEND QUEUE" << std::endl;
+	while(!aux.empty())
+	{
+		std::cout << aux.front() << std::endl;
+		aux.pop();
+	}
+	std::cout << "=============================================" << std::endl;
+}

@@ -6,7 +6,7 @@
 #    By: tomartin <tomartin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/04 19:11:19 by tomartin          #+#    #+#              #
-#    Updated: 2022/05/18 10:03:45 by tomartin         ###   ########.fr        #
+#    Updated: 2022/05/19 12:09:15 by tomartin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,8 +60,8 @@ obj:
 	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp 
-	mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) -o $@ -c $<
+	@mkdir -p $(@D)
+	@$(CXX) $(CXXFLAGS) -o $@ -c $<
 	
 # Compiling
 $(NAME): $(OBJ)
