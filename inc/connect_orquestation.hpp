@@ -31,6 +31,7 @@ class connect_orquestation
 		void	search_to_send();
 		void	search_to_recv();
 		void	init_ref_pollfd();
+		void	check_connection_status();
 };
 
 #endif

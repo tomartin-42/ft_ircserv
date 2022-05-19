@@ -68,7 +68,7 @@ std::string	connection::recv_msg()
 	return std::string(buff);
 }
 
-void	connection::ready_to_lisen()
+void	connection::ready_to_recv()
 {
 	this->set_poll_fd_events(POLLIN);
 }
@@ -126,4 +126,9 @@ void	connection::print_msg_send(std::queue<std::string> print_q)
 		aux.pop();
 	}
 	std::cout << "=============================================" << std::endl;
+}
+
+bool	connection::check_if_send_is_empty()
+{
+	return this->msg_send.check_if_empty();
 }

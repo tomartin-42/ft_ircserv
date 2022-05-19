@@ -47,13 +47,14 @@ class connection
 		pollfd*		get_poll_fd();
 		void		set_time();
 		std::string	get_time();
-		void		ready_to_lisen();
+		void		ready_to_recv();
 		void		ready_to_send();
 		ssize_t		send_msg();
 		std::string	recv_msg();
 		void		print_log();
 		void		print_msg_recv(std::queue<std::string> print_q);
 		void		print_msg_send(std::queue<std::string> print_q);
+		bool		check_if_send_is_empty();
 };
 
 #endif

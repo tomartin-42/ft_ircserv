@@ -65,7 +65,19 @@ void	connect_orquestation::init_ref_pollfd()
 {
 	std::vector<connection>::iterator	it;
 
-	for (it = this->l_connections.begin(); it != this->l_connections.end(); it++)
+	for (it = this-> l_connections.begin(); it != this->l_connections.end(); it++)
 		ref_pollfd.push_back(it->get_poll_fd());
 }
 
+void	connect_orquestation::check_connection_status()
+{
+	std::vector<connection>::iterator	it;
+
+	for(it = l_connections.begin(); it != l_connections.end(); it++)
+	{
+		if(it->check_if_send_is_empty())
+			it->ready_to_recv();
+		else
+			it->ready_to_send();
+	}
+}
