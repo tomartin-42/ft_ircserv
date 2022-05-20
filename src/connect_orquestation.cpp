@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 08:40:42 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/19 12:26:30 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/20 09:42:52 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ void	connect_orquestation::add_connection(connection &new_connect)
 //from socket
 int		connect_orquestation::poll_connections()
 {
-	this->init_ref_pollfd();
-	return (poll(this->ref_pollfd[0], ref_pollfd.size(), 0));
+	return (poll(&this->ref_pollfd[0], ref_pollfd.size() , 0));
 }
 
 //This function check all of the fds socket and if 
@@ -65,8 +64,10 @@ void	connect_orquestation::init_ref_pollfd()
 {
 	std::vector<connection>::iterator	it;
 
-	for (it = this-> l_connections.begin(); it != this->l_connections.end(); it++)
+	for (it = this->l_connections.begin(); it != this->l_connections.end(); it++)
+	{
 		ref_pollfd.push_back(it->get_poll_fd());
+	}
 }
 
 void	connect_orquestation::check_connection_status()
@@ -81,3 +82,13 @@ void	connect_orquestation::check_connection_status()
 			it->ready_to_send();
 	}
 }
+
+void	connect_orquestation::gestion_communication()
+{
+	this->ref_pollfd.clear();
+	this->init_ref_pollfd();
+	this->poll_connections();
+//	this->search_to_send();
+//	this->search_to_recv();
+}
+

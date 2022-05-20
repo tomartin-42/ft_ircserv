@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:40:09 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/19 12:24:57 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/20 09:38:12 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ void	connection::ready_to_send()
 	this->set_poll_fd_events(POLLOUT);
 }
 
-pollfd*	connection::get_poll_fd()
+pollfd	connection::get_poll_fd()
 {
-	return (&this->poll_fd);
+	return (this->poll_fd);
 }
 
 void	connection::add_log(bool sor, std::string msg)
