@@ -15,6 +15,7 @@
 
 #include <poll.h>
 #include <ctime>
+#include <cstdio>
 #include <string>
 #include <iostream>
 #include <sys/socket.h>
@@ -40,7 +41,9 @@ class connection
 		connection(int in_fd);
 
 		void		set_poll_fd_fd(const int fd);
+		short		get_poll_fd_events();
 		short		get_poll_fd_revents();
+		void		set_poll_fd_revents(const short new_revents);
 		int			get_fd();
 		pollfd		get_poll_fd();
 		void		set_time();

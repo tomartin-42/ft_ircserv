@@ -15,6 +15,7 @@
 
 #include "ft_ircserv.hpp"
 #include "connection.hpp"
+#include <cstdio>
 #include <vector>
 #include <poll.h>
 #include <iostream>

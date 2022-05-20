@@ -27,9 +27,19 @@ void	connection::set_poll_fd_events(const short event)
 	this->poll_fd.events = event;
 }
 
+short	connection::get_poll_fd_events()
+{
+	return (this->poll_fd.events);
+}
+
 short	connection::get_poll_fd_revents()
 {
 	return (this->poll_fd.revents);
+}
+
+void	connection::set_poll_fd_revents(const short new_revents)
+{
+	this->poll_fd.revents = new_revents;
 }
 
 int	connection::get_fd()
@@ -52,7 +62,6 @@ ssize_t connection::send_msg()
 {
 	ssize_t	aux = 0;
 	
-	std::cout << "SEND" << std::endl;
 	if (!msg_send.check_if_empty())
 	{
 		aux = send(this->fd, (this->msg_send.extract_msg_to_char()), 512, MSG_DONTWAIT);
@@ -64,7 +73,6 @@ std::string	connection::recv_msg()
 {
 	char	buff[512];
 
-	std::cout << "RECV" << std::endl;
 	recv(this->fd, &buff, 512, MSG_DONTWAIT);
 	this->msg_recv.add_msg(buff);
 	return std::string(buff);

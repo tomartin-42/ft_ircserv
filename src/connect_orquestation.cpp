@@ -24,22 +24,28 @@ void	connect_orquestation::add_connection(connection &new_connect)
 //from socket
 int		connect_orquestation::poll_connections()
 {
-	return (poll(&this->ref_pollfd[0], ref_pollfd.size() , 500));
+	int	n_con;
+	n_con = poll(&this->ref_pollfd[0], ref_pollfd.size() , 0);
+	return n_con;
 }
 
 //This function check all of the fds socket and if 
-//a socket is ready to lisen, send it a msg
+//a socket is ready to lisen, send it a msg*
 void	connect_orquestation::search_to_send()
 {
-	std::vector<connection>::iterator	it;
+	std::vector<pollfd>::iterator		it_pollfd;
 
-	for(it = this->l_connections.begin(); it != this->l_connections.end(); it++)
+	for(it_pollfd = this->ref_pollfd.begin(); it_pollfd != this->ref_pollfd.end(); it_pollfd++)
 	{
-			std::cout << it->get_poll_fd_revents() << std::endl;
-		if(it->get_poll_fd_revents() == POLLOUT)
+		if(it_pollfd->revents == POLLOUT)
 		{
-			std::cout << "SEND" << std::endl;
-			it->send_msg();//send_msg_queue
+			std::vector<connection>::iterator it_c;
+			for(it_c = this->l_connections.begin(); it_c != this->l_connections.end(); it_c++)
+				if(it_pollfd->fd == it_c->get_fd())
+				{
+					it_c->send_msg();//send_msg_queue
+					it_c->set_poll_fd_revents(0);
+				}
 		}
 	}
 }
@@ -48,15 +54,19 @@ void	connect_orquestation::search_to_send()
 //a socket is ready to recv, recv it a msg
 void	connect_orquestation::search_to_recv()
 {
-	std::vector<connection>::iterator	it;
+	std::vector<pollfd>::iterator		it_pollfd;
 
-	for(it = this->l_connections.begin(); it != this->l_connections.end(); it++)
+	for(it_pollfd = this->ref_pollfd.begin(); it_pollfd != this->ref_pollfd.end(); it_pollfd++)
 	{
-			std::cout << it->get_poll_fd_revents() << std::endl;
-		if(it->get_poll_fd_revents() == POLLIN)
+		if(it_pollfd->revents == POLLIN)
 		{
-			std::cout << "RECV" << std::endl;
-			it->recv_msg();//recv_msg_queue
+			std::vector<connection>::iterator it_c;
+			for(it_c = this->l_connections.begin(); it_c != this->l_connections.end(); it_c++)
+				if(it_pollfd->fd == it_c->get_fd())
+				{
+					it_c->recv_msg();//send_msg_queue
+					it_c->set_poll_fd_revents(0);
+				}
 		}
 	}
 }
@@ -93,8 +103,8 @@ void	connect_orquestation::check_connection_status()
 
 void	connect_orquestation::gestion_communication()
 {
-	this->check_connection_status();
 	this->ref_pollfd.clear();
+	this->check_connection_status();
 	this->init_ref_pollfd();
 	this->poll_connections();
 	this->search_to_send();
