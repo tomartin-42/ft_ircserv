@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:13:50 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/20 11:57:49 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/20 12:28:25 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ class connection
 		ssize_t		send_msg();
 		std::string	recv_msg();
 		void		print_log();
-		void		print_msg_recv(std::queue<std::string> print_q);
-		void		print_msg_send(std::queue<std::string> print_q);
+		void		print_msg_recv();
+		void		print_msg_send();
 		bool		check_if_send_is_empty();
 };
 

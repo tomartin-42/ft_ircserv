@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 08:40:42 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/20 11:53:42 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/20 13:34:52 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	connect_orquestation::add_connection(connection &new_connect)
 //from socket
 int		connect_orquestation::poll_connections()
 {
-	return (poll(&this->ref_pollfd[0], ref_pollfd.size() , 0));
+	return (poll(&this->ref_pollfd[0], ref_pollfd.size() , 500));
 }
 
 //This function check all of the fds socket and if 
@@ -35,8 +35,10 @@ void	connect_orquestation::search_to_send()
 
 	for(it = this->l_connections.begin(); it != this->l_connections.end(); it++)
 	{
+			std::cout << it->get_poll_fd_revents() << std::endl;
 		if(it->get_poll_fd_revents() == POLLOUT)
 		{
+			std::cout << "SEND" << std::endl;
 			it->send_msg();//send_msg_queue
 		}
 	}
@@ -50,8 +52,10 @@ void	connect_orquestation::search_to_recv()
 
 	for(it = this->l_connections.begin(); it != this->l_connections.end(); it++)
 	{
+			std::cout << it->get_poll_fd_revents() << std::endl;
 		if(it->get_poll_fd_revents() == POLLIN)
 		{
+			std::cout << "RECV" << std::endl;
 			it->recv_msg();//recv_msg_queue
 		}
 	}
@@ -77,14 +81,19 @@ void	connect_orquestation::check_connection_status()
 	for(it = l_connections.begin(); it != l_connections.end(); it++)
 	{
 		if(it->check_if_send_is_empty())
+		{
 			it->ready_to_recv();
+		}
 		else
+		{
 			it->ready_to_send();
+		}
 	}
 }
 
 void	connect_orquestation::gestion_communication()
 {
+	this->check_connection_status();
 	this->ref_pollfd.clear();
 	this->init_ref_pollfd();
 	this->poll_connections();
@@ -92,3 +101,13 @@ void	connect_orquestation::gestion_communication()
 	this->search_to_recv();
 }
 
+void	connect_orquestation::print_msgs()
+{
+	std::vector<connection>::iterator	it;
+
+	for(it = l_connections.begin(); it != l_connections.end(); it++)
+	{
+		it->print_msg_recv();
+		it->print_msg_send();
+	}
+}

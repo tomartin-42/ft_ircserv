@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 17:35:01 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/20 08:28:04 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/20 12:33:55 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int main(void)
 			connect_orquest.add_connection(in_connect);
 		}
 		connect_orquest.gestion_communication();
+		connect_orquest.print_msgs();
 	}
 }

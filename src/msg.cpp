@@ -45,3 +45,15 @@ msg::~msg()
 	while(!this->msg_q.empty())
 		this->msg_q.pop();
 }
+
+void	msg::print_all_msg()
+{
+	std::queue<std::string>	aux(this->msg_q);
+
+	while(!aux.empty())
+	{
+		std::cout << aux.front() << std::endl;
+		aux.pop();
+	}
+}
+

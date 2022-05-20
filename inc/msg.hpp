@@ -3,6 +3,7 @@
 
 #include <queue>
 #include <string>
+#include <iostream>
 
 class msg
 {
@@ -17,6 +18,7 @@ class msg
 		void		add_msg(const std::string str);
 		std::string	extract_msg();
 		const char*	extract_msg_to_char();
+		void		print_all_msg();
 };
 
 #endif

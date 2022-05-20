@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:40:09 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/20 09:38:12 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/20 13:36:32 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ ssize_t connection::send_msg()
 {
 	ssize_t	aux = 0;
 	
+	std::cout << "SEND" << std::endl;
 	if (!msg_send.check_if_empty())
 	{
 		aux = send(this->fd, (this->msg_send.extract_msg_to_char()), 512, MSG_DONTWAIT);
@@ -63,6 +64,7 @@ std::string	connection::recv_msg()
 {
 	char	buff[512];
 
+	std::cout << "RECV" << std::endl;
 	recv(this->fd, &buff, 512, MSG_DONTWAIT);
 	this->msg_recv.add_msg(buff);
 	return std::string(buff);
@@ -102,29 +104,17 @@ void connection::print_log()
 		std::cout << this->fd << " " << *it << std::endl;
 }
 	
-void	connection::print_msg_recv(std::queue<std::string> print_q)
+void	connection::print_msg_recv()
 {
-	std::queue<std::string>	aux(print_q);
-	
-	std::cout << "RECV QUEUE" << std::endl;
-	while(!aux.empty())
-	{
-		std::cout << aux.front() << std::endl;
-		aux.pop();
-	}
+	std::cout << "RECV QUEUE FD:" << this->get_fd() << std::endl;
+	this->msg_recv.print_all_msg();
 	std::cout << "=============================================" << std::endl;
 }
 
-void	connection::print_msg_send(std::queue<std::string> print_q)
+void	connection::print_msg_send()
 {
-	std::queue<std::string>	aux(print_q);
-	
-	std::cout << "SEND QUEUE" << std::endl;
-	while(!aux.empty())
-	{
-		std::cout << aux.front() << std::endl;
-		aux.pop();
-	}
+	std::cout << "SEND QUEUE FD:" << this->get_fd() << std::endl;
+	this->msg_send.print_all_msg();
 	std::cout << "=============================================" << std::endl;
 }
 
