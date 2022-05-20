@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 08:40:42 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/20 09:42:52 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/20 11:53:42 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	connect_orquestation::gestion_communication()
 	this->ref_pollfd.clear();
 	this->init_ref_pollfd();
 	this->poll_connections();
-//	this->search_to_send();
-//	this->search_to_recv();
+	this->search_to_send();
+	this->search_to_recv();
 }
 

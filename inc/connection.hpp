@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:13:50 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/20 09:38:28 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/20 11:57:49 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ class connection
 		user					c_user;
 		msg						msg_send;	//msg_send queue
 		msg						msg_recv;	//msg_recv queue
-		//std::queue<std::string> msg_recv;	//recv msg queue
-		//std::queue<std::string> msg_send;	//to send msg queue
 		std::vector<std::string> log;		//comunication log
 
 		void		set_poll_fd_events(const short event);
