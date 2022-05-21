@@ -6,7 +6,7 @@
 #    By: tomartin <tomartin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/04 19:11:19 by tomartin          #+#    #+#              #
-#    Updated: 2022/05/20 11:50:27 by tomartin         ###   ########.fr        #
+#    Updated: 2022/05/21 13:19:56 by tomartin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,13 +33,12 @@ CXXFLAGS = -Wall -Wextra -Werror -Iinc -MD -O3 -g3 -fsanitize=address
 LDFLAGS = -fsanitize=address
 
 # Folders
-:q
 OBJ_DIR = obj/
 SRC_DIR = src/
 
 # Source files and includes
 SRC_FILES = main.cpp my_socket.cpp sending.cpp connection.cpp \
-			user.cpp connect_orquestation.cpp msg.cpp
+			user.cpp connect_orquestation.cpp msg.cpp poll_fd.cpp \
 
 # Objs
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))	
@@ -65,6 +64,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
 	
 # Compiling
 $(NAME): $(OBJ)
+	@echo $(NAME)
 	@echo "By Javgonza, Vicmarti & Tomartin in 42Madrid"
 	@$(CXX) $(OBJ) $(LDFLAGS) -o $(NAME)
 	@echo "Compilation OK!!"
