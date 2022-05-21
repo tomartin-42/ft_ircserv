@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:40:09 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/20 13:36:32 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/21 13:31:51 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	connection::set_poll_fd_revents(const short new_revents)
 	this->poll_fd.revents = new_revents;
 }
 
-int	connection::get_fd()
+int	connection::get_fd() const
 {
 	return (this->fd);
 }

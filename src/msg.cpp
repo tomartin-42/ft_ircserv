@@ -52,7 +52,8 @@ void	msg::print_all_msg()
 
 	while(!aux.empty())
 	{
-		std::cout << aux.front() << std::endl;
+		std::cout << aux.front();
+		std::cout << aux.front().size() << std::endl;
 		aux.pop();
 	}
 }
