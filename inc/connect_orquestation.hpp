@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 08:39:20 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/20 12:30:19 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/22 20:00:28 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class connect_orquestation
 
 		void	search_to_send();
 		void	search_to_recv();
+
 	public:
 		void	add_connection(connection &new_connect);
 		int		poll_connections();

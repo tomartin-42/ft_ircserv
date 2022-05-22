@@ -6,14 +6,17 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:37:45 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/21 12:27:38 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/22 20:20:41 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "poll_fd.hpp"
 
-poll_fd::poll_fd() {}
-
+poll_fd::poll_fd() 
+{
+	memset(this->polls, -1, sizeof(pollfd) * MAX_CONNECTIONS);
+}
+/*
 poll_fd::~poll_fd() {}
 
 poll_fd::poll_fd(const int& n_fd)
@@ -62,4 +65,4 @@ void	poll_fd::set_polls(const pollfd& n_polls)
 {
 	this->polls = n_polls;
 }
-
+*/

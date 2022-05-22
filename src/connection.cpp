@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:40:09 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/22 17:58:16 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/22 18:05:06 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ std::string	connection::recv_msg()
 {
 	char	buff[512];
 
+	bzero(buff, 512);
 	recv(this->fd, &buff, 512, MSG_DONTWAIT);
 	this->msg_recv.add_msg(buff);
 	return std::string(buff);
