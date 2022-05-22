@@ -9,7 +9,9 @@ class msg
 {
 	private:
 		std::queue<std::string>	msg_q;
+		std::string				buff_aux;
 	
+		std::string	get_next_msg();
 	public:
 		~msg();
 		bool		check_if_empty() const;

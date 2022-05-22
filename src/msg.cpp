@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   msg.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/21 16:51:19 by tomartin          #+#    #+#             */
+/*   Updated: 2022/05/22 17:56:26 by tomartin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "msg.hpp"
 
 bool	msg::check_if_empty() const
@@ -7,9 +19,24 @@ bool	msg::check_if_empty() const
 	return false;
 }
 
-void	msg::add_msg(const char* str)
+std::string	msg::get_next_msg()
 {
-	this->msg_q.push(std::string(str));
+	std::string::size_type	point;
+
+	point = this->buff_aux.find("\x0d\x0a", 0);
+	std::string	ret(this->buff_aux.substr(0, (point)));
+	this->buff_aux.erase(0, (point + 2));
+	return ret;
+}
+
+void	msg::add_msg(const char* str) 
+{
+	this->buff_aux.append(str);
+
+	while(this->buff_aux.find("\x0d\x0a", 0) != std::string::npos)
+	{
+		this->msg_q.push(this->get_next_msg());
+	}
 }
 
 void	msg::add_msg(const std::string str)
@@ -52,8 +79,7 @@ void	msg::print_all_msg()
 
 	while(!aux.empty())
 	{
-		std::cout << aux.front();
-		std::cout << aux.front().size() << std::endl;
+		std::cout << "MSG: " << aux.front() << std::endl;
 		aux.pop();
 	}
 }
