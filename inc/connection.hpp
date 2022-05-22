@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:13:50 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/21 18:05:21 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/22 18:00:01 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@
 class connection
 {
 	private:
-		const int				fd;
-		pollfd					poll_fd;
-		time_t					c_time;
-		user					c_user;
-		msg						msg_send;	//msg_send queue
-		msg						msg_recv;	//msg_recv queue
-		std::vector<std::string> log;		//comunication log
+		const int					fd;
+		pollfd						poll_fd;
+		time_t						c_time;
+		user						c_user;
+		msg							msg_send;	//msg_send queue
+		msg							msg_recv;	//msg_recv queue
+		std::vector<std::string>	log;		//comunication log
 
 		void		set_poll_fd_events(const short event);
 		void		add_log(bool sor, std::string msg);

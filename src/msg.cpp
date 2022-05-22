@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:51:19 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/22 17:56:26 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/22 17:59:14 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ void	msg::add_msg(const char* str)
 	this->buff_aux.append(str);
 
 	while(this->buff_aux.find("\x0d\x0a", 0) != std::string::npos)
-	{
 		this->msg_q.push(this->get_next_msg());
-	}
 }
 
 void	msg::add_msg(const std::string str)
