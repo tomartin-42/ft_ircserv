@@ -51,6 +51,7 @@ std::string	connection::recv_msg()
 	bzero(buff, 512);
 	recv(this->fd, &buff, 512, MSG_DONTWAIT);
 	this->msg_recv.add_msg(buff);
+	this->add_log(RECV, std::string(buff));
 	return std::string(buff);
 }
 /*

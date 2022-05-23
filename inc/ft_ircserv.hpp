@@ -15,4 +15,14 @@
 
 #define	MAX_CONNECTIONS	128
 
+//----------------Send o Recv-------------------//
+
+#define SEND 0
+#define RECV 1
+
+//---------------Types users--------------------//
+
+#define UNKNOW 'U'
+#define OPERATOR 'O'
+
 #endif

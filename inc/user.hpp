@@ -15,27 +15,29 @@
 
 #include <string>
 #include <queue>
+#include "ft_ircserv.hpp"
 
 class user
 {
 	private:
-		//int						us_id;
+		int						us_id;
 		std::string				nick;
 		std::string 			name;
-		int						type;
+		char					type;
 		std::queue<std::string>	send_q;	
 		std::queue<std::string>	recv_q;
+		//std::vector<chanel>		chanel_list;
 
 	public:
 		user();
 
-		std::string	get_nick();
-		std::string get_name();
-		int			get_type();
+		std::string&	get_nick();
+		std::string&	get_name();
+		char&			get_type();
 
-		void		set_nick(std::string nick);
-		void		set_name(std::string name);
-		void		set_type(int type);
+		void		set_nick(const std::string& nick);
+		void		set_name(const std::string& name);
+		void		set_type(const char& type);
 
 };
 
