@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 08:39:20 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/23 11:03:59 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/23 11:44:44 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ class connect_orquestation
 {
 	private:
 		std::vector<connection>	l_connections;
-		std::vector<pollfd>		ref_pollfd;
 		poll_fd					poll_list;
 		
 		void	search_to_send();

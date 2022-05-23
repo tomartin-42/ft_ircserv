@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:40:09 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/22 18:05:06 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/23 13:33:06 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,7 @@
 
 connection::connection(int in_fd) : fd(in_fd) , c_user()
 {
-	this->poll_fd.fd = in_fd;
-}
-
-void	connection::set_poll_fd_fd(const int fd)
-{
-	this->poll_fd.fd = fd;
-}
-
-void	connection::set_poll_fd_events(const short event)
-{
-	this->poll_fd.events = event;
-}
-
-short	connection::get_poll_fd_events()
-{
-	return (this->poll_fd.events);
-}
-
-short	connection::get_poll_fd_revents()
-{
-	return (this->poll_fd.revents);
-}
-
-void	connection::set_poll_fd_revents(const short new_revents)
-{
-	this->poll_fd.revents = new_revents;
+//	this->poll_fd_point.fd = in_fd;
 }
 
 int	connection::get_fd() const
@@ -78,7 +53,7 @@ std::string	connection::recv_msg()
 	this->msg_recv.add_msg(buff);
 	return std::string(buff);
 }
-
+/*
 void	connection::ready_to_recv()
 {
 	this->set_poll_fd_events(POLLIN);
@@ -88,11 +63,7 @@ void	connection::ready_to_send()
 {
 	this->set_poll_fd_events(POLLOUT);
 }
-
-pollfd	connection::get_poll_fd()
-{
-	return (this->poll_fd);
-}
+*/
 
 void	connection::add_log(bool sor, std::string msg)
 {
@@ -130,4 +101,14 @@ void	connection::print_msg_send()
 bool	connection::check_if_send_is_empty()
 {
 	return this->msg_send.check_if_empty();
+}
+
+void	connection::set_poll_fd_point(pollfd* point)
+{
+	this->poll_fd_point = point;
+}
+
+pollfd*	connection::get_poll_fd_point()
+{
+	return (this->poll_fd_point);
 }

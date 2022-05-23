@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:24:23 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/23 11:05:12 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/23 12:56:06 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@
 #include <cstring>
 #include "ft_ircserv.hpp"
 
-class poll_fd
+struct poll_fd
 {
-	private:
 		pollfd	polls[MAX_CONNECTIONS];
 		pollfd	empty_pollfd;
 	
-	public:
 		poll_fd();
 		~poll_fd();
 
@@ -37,6 +35,7 @@ class poll_fd
 		bool	fd_is_in_polls(const int& fd) const;
 		void	dell_polls_element(const int& fd);
 		pollfd*	pointer_polls();
+		pollfd*	one_point_polls(const int& fd);
 };
 
 #endif

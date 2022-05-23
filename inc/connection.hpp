@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:13:50 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/22 18:00:01 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/23 13:32:22 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,18 @@ class connection
 {
 	private:
 		const int					fd;
-		pollfd						poll_fd;
+		pollfd*						poll_fd_point;
 		time_t						c_time;
 		user						c_user;
 		msg							msg_send;	//msg_send queue
 		msg							msg_recv;	//msg_recv queue
 		std::vector<std::string>	log;		//comunication log
 
-		void		set_poll_fd_events(const short event);
 		void		add_log(bool sor, std::string msg);
 
 	public:
 		connection(int in_fd);
 
-		void		set_poll_fd_fd(const int fd);
-		short		get_poll_fd_events();
-		short		get_poll_fd_revents();
-		void		set_poll_fd_revents(const short new_revents);
 		int			get_fd() const;
 		pollfd		get_poll_fd();
 		void		set_time();
@@ -56,6 +51,8 @@ class connection
 		void		print_msg_recv();
 		void		print_msg_send();
 		bool		check_if_send_is_empty();
+		void		set_poll_fd_point(pollfd* point);
+		pollfd*		get_poll_fd_point();
 };
 
 #endif
