@@ -18,9 +18,10 @@ void	connect_orquestation::add_connection(connection &new_connect)
 {
 	pollfd*	aux;
 
-	this->l_connections.push_back(new_connect);
 	aux = this->poll_list.add_pollfd_fd(new_connect.get_fd());
-	std::cout << aux << std::endl;
+	new_connect.set_poll_fd_point(aux);
+	this->l_connections.push_back(new_connect);
+	//this->l_connections.end()->set_poll_fd_point(aux);
 }
 
 //This function in responsible to check event in the 

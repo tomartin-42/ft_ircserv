@@ -17,6 +17,7 @@
 #include <ctime>
 #include <cstdio>
 #include <string>
+#include <strings.h>
 #include <iostream>
 #include <sys/socket.h>
 #include <sys/types.h>
@@ -27,8 +28,8 @@ class connection
 {
 	private:
 		const int					fd;
-		pollfd*						poll_fd_point;
 		time_t						c_time;
+		pollfd*						poll_fd_point;
 		user						c_user;
 		msg							msg_send;	//msg_send queue
 		msg							msg_recv;	//msg_recv queue
