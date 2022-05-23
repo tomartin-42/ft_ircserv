@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 08:40:42 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/22 20:18:43 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/23 11:06:58 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 void	connect_orquestation::add_connection(connection &new_connect)
 {
 	this->l_connections.push_back(new_connect);
+	poll_list.add_pollfd_fd(new_connect.get_fd());
 }
 
 //This function in responsible to check event in the 

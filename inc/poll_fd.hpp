@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:24:23 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/22 20:20:23 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/23 11:05:12 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@ class poll_fd
 {
 	private:
 		pollfd	polls[MAX_CONNECTIONS];
+		pollfd	empty_pollfd;
 	
 	public:
 		poll_fd();
-	/*	~poll_fd();
-		poll_fd(const int& n_fd);
-		poll_fd(const poll_fd& other);
-		poll_fd& operator = (const poll_fd& other);
-		int		get_polls_fd() const;
-		short	get_polls_events() const;
-		short	get_polls_revents() const;
-		pollfd	get_polls() const;
-		void	set_polls_fd(const int& n_fd);
-		void	set_polls_events(const short& n_events);
-		void	set_polls_revents(const short& n_revents);
-		void	set_polls(const pollfd& n_polls);
-	*/
+		~poll_fd();
+
+		int		num_activate_fds() const;
+		int		add_pollfd_fd(const int& n_fd);
+		pollfd	get_pollfd_values(const int& fd) const;
+		short	get_pollfd_event(const int& fd) const;
+		void	set_pollfd_event(const int& fd, const short& n_event);
+		short	get_pollfd_revent(const int& fd) const;
+		void	set_pollfd_revent(const int& fd, const short& n_revent);
+		bool	fd_is_in_polls(const int& fd) const;
+		void	dell_polls_element(const int& fd);
+		pollfd*	pointer_polls();
 };
 
 #endif

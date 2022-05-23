@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 08:39:20 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/22 20:00:28 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/23 11:03:59 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include "ft_ircserv.hpp"
 #include "connection.hpp"
+#include "poll_fd.hpp"
 #include <cstdio>
 #include <vector>
 #include <poll.h>
@@ -25,7 +26,8 @@ class connect_orquestation
 	private:
 		std::vector<connection>	l_connections;
 		std::vector<pollfd>		ref_pollfd;
-
+		poll_fd					poll_list;
+		
 		void	search_to_send();
 		void	search_to_recv();
 

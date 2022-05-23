@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:37:45 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/22 20:20:41 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/23 11:02:04 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,54 +15,115 @@
 poll_fd::poll_fd() 
 {
 	memset(this->polls, -1, sizeof(pollfd) * MAX_CONNECTIONS);
+	this->empty_pollfd.fd = -1;
+	this->empty_pollfd.events = -1;
+	this->empty_pollfd.revents = -1;
 }
-/*
+
 poll_fd::~poll_fd() {}
 
-poll_fd::poll_fd(const int& n_fd)
-{	
-	this->polls.fd = n_fd;
-	this->polls.events = 0;
-	this->polls.revents = 0;
-}
-
-poll_fd::poll_fd(const poll_fd& other) 
+int	poll_fd::add_pollfd_fd(const int& n_fd)
 {
-	this->polls.fd = other.polls.fd;
-	this->polls.events = other.polls.events;
-	this->polls.revents = other.polls.revents;
+	for(int i = 0; i < MAX_CONNECTIONS; i++)
+	{
+		if(this->polls[i].fd == -1)
+		{
+			this->polls[i].fd = n_fd;
+			return i;
+		}
+	}
+	return 0;
 }
 
-poll_fd&	poll_fd::operator = (const poll_fd& other)
+int	poll_fd::num_activate_fds() const
 {
-	this->polls.fd = other.polls.fd;
-	this->polls.events = other.polls.events;
-	this->polls.revents = other.polls.revents;
-	return *this;
+	int res = 0;
+
+	for(int i = 0; i < MAX_CONNECTIONS; i++)
+	{
+		if (this->polls[i].fd != -1)
+			res++;
+	}
+	return res;
 }
 
-int		poll_fd::get_polls_fd() const {return (this->polls.fd);}
-
-short	poll_fd::get_polls_events() const {return (this->polls.events);}
-
-short	poll_fd::get_polls_revents() const {return (this->polls.revents);}
-
-pollfd	poll_fd::get_polls() const {return (this->polls);}
-
-void	poll_fd::set_polls_fd(const int& n_fd) {this->polls.fd = n_fd;}
-
-void	poll_fd::set_polls_events(const short& n_events) 
+pollfd poll_fd::get_pollfd_values(const int& fd) const
 {
-	this->polls.events = n_events;
+	for(int i = 0; i < MAX_CONNECTIONS; i++)
+	{
+		if(this->polls[i].fd == fd)
+			return (this->polls[i]);
+	}
+	return (this->empty_pollfd);
 }
 
-void	poll_fd::set_polls_revents(const short& n_revents)
+short	poll_fd::get_pollfd_event(const int& fd) const
 {
-	this->polls.revents = n_revents;
+	for(int i = 0; i < MAX_CONNECTIONS; i++)
+	{
+		if(this->polls[i].fd == fd)
+			return (this->polls[i].events);
+
+	}
+	return (-1);
 }
 
-void	poll_fd::set_polls(const pollfd& n_polls)
+void	poll_fd::set_pollfd_event(const int& fd, const short& n_event)
 {
-	this->polls = n_polls;
+	for(int i = 0; i < MAX_CONNECTIONS; i++)
+	{
+		if(this->polls[i].fd == fd)
+		{
+			this->polls[i].events = n_event;
+			break ;
+		}
+	}
 }
-*/
+
+short	poll_fd::get_pollfd_revent(const int& fd) const
+{
+	for(int i = 0; i < MAX_CONNECTIONS; i++)
+	{
+		if(this->polls[i].fd == fd)
+			return (this->polls[i].revents);
+	}
+	return (-1);
+}
+
+void	poll_fd::set_pollfd_revent(const int& fd, const short& n_revent)
+{
+	for(int i = 0; i < MAX_CONNECTIONS; i++)
+	{
+		if(this->polls[i].fd == fd)
+		{
+			this->polls[i].revents = n_revent;
+			break ;
+		}
+	}
+}
+
+bool	poll_fd::fd_is_in_polls(const int& fd) const
+{
+	bool	resp = false;
+
+	for (int i = 0; i < MAX_CONNECTIONS; i++)
+	{
+		if(this->polls[i].fd == fd)
+			return true;
+	}
+	return resp;
+}
+
+void	poll_fd::dell_polls_element(const int& fd)
+{
+	for(int i = 0; i < MAX_CONNECTIONS; i++)
+	{
+		if(this->polls[i].fd == fd)
+			polls[i] = this->empty_pollfd;
+	}
+}
+
+pollfd*	poll_fd::pointer_polls()
+{
+	return(&(this->polls[0]));
+}
