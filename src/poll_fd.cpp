@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:37:45 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/23 13:26:54 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/23 13:52:00 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ poll_fd::poll_fd()
 
 poll_fd::~poll_fd() {}
 
-int	poll_fd::add_pollfd_fd(const int& n_fd)
+pollfd*	poll_fd::add_pollfd_fd(const int& n_fd)
 {
 	for(int i = 0; i < MAX_CONNECTIONS; i++)
 	{
 		if(this->polls[i].fd == -1)
 		{
 			this->polls[i].fd = n_fd;
-			return i;
+			return (&this->polls[i]);
 		}
 	}
-	return 0;
+	return (NULL);
 }
 
 int	poll_fd::num_activate_fds() const

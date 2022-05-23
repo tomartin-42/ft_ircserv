@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:24:23 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/23 12:56:06 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/23 13:51:18 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ struct poll_fd
 		~poll_fd();
 
 		int		num_activate_fds() const;
-		int		add_pollfd_fd(const int& n_fd);
+		pollfd*	add_pollfd_fd(const int& n_fd);
 		pollfd	get_pollfd_values(const int& fd) const;
 		short	get_pollfd_event(const int& fd) const;
 		void	set_pollfd_event(const int& fd, const short& n_event);
