@@ -65,7 +65,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
 	
 # Compiling
 $(NAME): $(OBJ)
-	@echo $(NAME)
+	@echo "Compiling "$(NAME)
 	@echo "By Javgonza, Vicmarti & Tomartin in 42Madrid"
 	@$(CXX) $(OBJ) $(LDFLAGS) -o $(NAME)
 	@echo "Compilation OK!!"

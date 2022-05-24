@@ -31,13 +31,14 @@ class user
 	public:
 		user();
 
-		std::string&	get_nick();
-		std::string&	get_name();
-		char&			get_type();
+		std::string		get_nick() const;
+		std::string		get_name() const;
+		char			get_type() const;
 
 		void		set_nick(const std::string& nick);
 		void		set_name(const std::string& name);
 		void		set_type(const char& type);
+		void		set_us_id(const unsigned int& serv_id);
 
 };
 
