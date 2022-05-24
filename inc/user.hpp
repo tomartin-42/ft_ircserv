@@ -20,7 +20,7 @@
 class user
 {
 	private:
-		int						us_id;
+		unsigned int			us_id;
 		std::string				nick;
 		std::string 			name;
 		char					type;
