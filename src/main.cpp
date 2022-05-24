@@ -30,7 +30,8 @@ int main(void)
 		while(new_socket.pending_connection())
 		{
 			connection in_connect(new_socket.extract_new_connection());
-			in_connect.c_user.set_us_id(new_server.get_new_user_id());
+			//in_connect.c_user.set_us_id(new_server.get_new_user_id());
+			in_connect.set_c_user_id(new_server.get_new_user_id());
 			connect_orquest.add_connection(in_connect);
 		}
 		connect_orquest.gestion_communication();

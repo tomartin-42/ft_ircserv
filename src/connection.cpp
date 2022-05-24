@@ -113,3 +113,8 @@ pollfd*	connection::get_poll_fd_point()
 {
 	return (this->poll_fd_point);
 }
+
+void	connection::set_c_user_id(const unsigned int& id)
+{
+	this->c_user.set_us_id(id);
+}

@@ -29,8 +29,8 @@ class connection
 	private:
 		const int					fd;
 		time_t						c_time;
-		pollfd*						poll_fd_point;
 		user						c_user;
+		pollfd*						poll_fd_point;
 		msg							msg_send;	//msg_send queue
 		msg							msg_recv;	//msg_recv queue
 		std::vector<std::string>	log;		//comunication log
@@ -54,6 +54,8 @@ class connection
 		bool		check_if_send_is_empty();
 		void		set_poll_fd_point(pollfd* point);
 		pollfd*		get_poll_fd_point();
+
+		void		set_c_user_id(const unsigned int& id);
 };
 
 #endif
