@@ -1,6 +1,6 @@
 #include "log.hpp"
 
-//log::log() : log_name(user_id)
+log::log(unsigned int user_id) : log_name(user_id)
 
 void	log::add_msg(const std::string& msg)
 {

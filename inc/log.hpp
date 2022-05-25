@@ -10,7 +10,7 @@ class log
 {
 	private:
 		std::queue<std::string> log;
-	//	std::string				log_name;
+		const unsigned int		log_name;
 	
 	public:
 		log();

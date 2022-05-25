@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:40:09 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/23 13:33:06 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/25 11:17:52 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,3 @@ pollfd*	connection::get_poll_fd_point()
 	return (this->poll_fd_point);
 }
 
-void	connection::set_c_user_id(const unsigned int& id)
-{
-	this->c_user.set_us_id(id);
-}

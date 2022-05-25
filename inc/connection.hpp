@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:13:50 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/23 13:32:22 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/25 14:03:18 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ class connection
 	private:
 		const int					fd;
 		time_t						c_time;
-		user						c_user;
 		pollfd*						poll_fd_point;
 		msg							msg_send;	//msg_send queue
 		msg							msg_recv;	//msg_recv queue
@@ -38,6 +37,8 @@ class connection
 		void		add_log(bool sor, std::string msg);
 
 	public:
+		user						c_user;
+
 		connection(int in_fd);
 
 		int			get_fd() const;
@@ -54,8 +55,6 @@ class connection
 		bool		check_if_send_is_empty();
 		void		set_poll_fd_point(pollfd* point);
 		pollfd*		get_poll_fd_point();
-
-		void		set_c_user_id(const unsigned int& id);
 };
 
 #endif
