@@ -12,7 +12,7 @@
 
 #include "user.hpp"
 
-user::user() : nick("init"), name("init"), type(UNKNOW) {}
+user::user(unsigned int id) : us_id(id), nick("init"), name("init"), type(UNKNOW), user_log(us_id) {}
 
 std::string		user::get_nick() const 
 {return this->nick;}
@@ -34,3 +34,14 @@ void			user::set_type(const char& type)
 
 void			user::set_us_id(const unsigned int& serv_id) 
 {this->us_id = serv_id;}
+
+const connection*		user::get_connection_p()
+{
+	return (this->connection_p);
+}
+
+void			user::set_connection_p(const connection* conn_p)
+{
+	this->connection_p = conn_p;
+}
+

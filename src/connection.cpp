@@ -12,7 +12,7 @@
 
 #include "connection.hpp"
 
-connection::connection(int in_fd) : fd(in_fd) , c_user()
+connection::connection(int in_fd) : fd(in_fd)
 {
 //	this->poll_fd_point.fd = in_fd;
 }
@@ -108,9 +108,3 @@ void	connection::set_poll_fd_point(pollfd* point)
 {
 	this->poll_fd_point = point;
 }
-
-pollfd*	connection::get_poll_fd_point()
-{
-	return (this->poll_fd_point);
-}
-

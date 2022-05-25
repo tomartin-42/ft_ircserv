@@ -22,7 +22,7 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include "msg.hpp"
-#include "user.hpp"
+#include "ft_ircserv.hpp"
 
 class connection
 {
@@ -37,7 +37,7 @@ class connection
 		void		add_log(bool sor, std::string msg);
 
 	public:
-		user						c_user;
+	//	user						c_user;
 
 		connection(int in_fd);
 

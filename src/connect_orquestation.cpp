@@ -106,3 +106,8 @@ void	connect_orquestation::print_msgs()
 		it->print_msg_send();
 	}
 }
+
+void	connect_orquestation::add_user(user& new_user)
+{
+	this->l_user.push_back(new_user);
+}

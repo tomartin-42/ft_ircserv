@@ -14,6 +14,7 @@
 #include "connect_orquestation.hpp"
 #include "connection.hpp"
 #include "server.hpp"
+#include "user.hpp"
 #include <iostream>
 #include <cstdio>
 
@@ -29,10 +30,13 @@ int main(void)
 		new_socket.load_in_connections();
 		while(new_socket.pending_connection())
 		{
-			connection in_connect(new_socket.extract_new_connection());
-			in_connect.c_user.set_us_id(new_server.get_new_user_id()); //with user class public
+			connection	in_connect(new_socket.extract_new_connection());
+			user		in_user(new_server.get_new_user_id());
+
+			//in_user.set_us_id(new_server.get_new_user_id()); //with user class public
 			//in_connect.set_c_user_id(new_server.get_new_user_id()); //Dual seter
 			connect_orquest.add_connection(in_connect);
+			connect_orquest.add_user(in_user);
 		}
 		connect_orquest.gestion_communication();
 		connect_orquest.print_msgs();

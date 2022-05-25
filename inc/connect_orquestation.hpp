@@ -15,6 +15,7 @@
 
 #include "ft_ircserv.hpp"
 #include "connection.hpp"
+#include "user.hpp"
 #include "poll_fd.hpp"
 #include <cstdio>
 #include <vector>
@@ -25,6 +26,7 @@ class connect_orquestation
 {
 	private:
 		std::vector<connection>	l_connections;
+		std::vector<user>		l_user;
 		poll_fd					poll_list;
 		
 		void	search_to_send();
@@ -37,6 +39,7 @@ class connect_orquestation
 		void	check_connection_status();
 		void	gestion_communication();
 		void	print_msgs();
+		void	add_user(user& new_user);
 };
 
 #endif
