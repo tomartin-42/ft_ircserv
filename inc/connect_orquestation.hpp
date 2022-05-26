@@ -19,27 +19,29 @@
 #include "poll_fd.hpp"
 #include <cstdio>
 #include <vector>
+#include <map>
 #include <poll.h>
 #include <iostream>
+
+typedef std::pair<user, connection>	us_con;
 
 class connect_orquestation
 {
 	private:
-		std::vector<connection>	l_connections;
-		std::vector<user>		l_user;
-		poll_fd					poll_list;
+		//std::vector<connection>							l_connections;
+		std::map<int fd, std::pair<user, connection>>	l_connections;
+		poll_fd											poll_list;
 		
 		void	search_to_send();
 		void	search_to_recv();
 
 	public:
-		void	add_connection(connection &new_connect);
+		void	add_connection(user& new_user, connection& new_connect);
 		int		poll_connections();
 		void	init_ref_pollfd();
 		void	check_connection_status();
 		void	gestion_communication();
 		void	print_msgs();
-		void	add_user(user& new_user);
 };
 
 #endif

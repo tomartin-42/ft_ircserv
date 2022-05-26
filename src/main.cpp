@@ -32,8 +32,8 @@ int main(void)
 		{
 			connection	in_connect(new_socket.extract_new_connection());
 			user		in_user(new_server.get_new_user_id());
-			connect_orquest.add_connection(in_connect);
-			connect_orquest.add_user(in_user);
+			connect_orquest.add_connection(in_user, in_connect);
+			//connect_orquest.add_user(in_user);
 		}
 		connect_orquest.gestion_communication();
 		connect_orquest.print_msgs();
