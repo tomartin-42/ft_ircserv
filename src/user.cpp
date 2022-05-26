@@ -6,13 +6,16 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:28:27 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/25 13:28:30 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/26 10:01:18 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "user.hpp"
 
-user::user(unsigned int id) : us_id(id), nick("init"), name("init"), type(UNKNOW), user_log(us_id) {}
+user::user(unsigned int id) : log(id), us_id(id), nick("init"), name("init"), 
+	type(UNKNOW)
+{
+}
 
 std::string		user::get_nick() const 
 {return this->nick;}
@@ -44,4 +47,3 @@ void			user::set_connection_p(const connection* conn_p)
 {
 	this->connection_p = conn_p;
 }
-

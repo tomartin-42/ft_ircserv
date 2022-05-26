@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:40:09 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/25 11:17:52 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/26 08:53:38 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 connection::connection(int in_fd) : fd(in_fd)
 {
-//	this->poll_fd_point.fd = in_fd;
 }
 
 int	connection::get_fd() const
@@ -54,17 +53,6 @@ std::string	connection::recv_msg()
 	this->add_log(RECV, std::string(buff));
 	return std::string(buff);
 }
-/*
-void	connection::ready_to_recv()
-{
-	this->set_poll_fd_events(POLLIN);
-}
-
-void	connection::ready_to_send()
-{
-	this->set_poll_fd_events(POLLOUT);
-}
-*/
 
 void	connection::add_log(bool sor, std::string msg)
 {

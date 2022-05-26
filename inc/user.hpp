@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 07:56:23 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/25 14:03:11 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/26 09:51:42 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include "log.hpp"
 
 
-class user
+class user : public log
 {
 	private:
 		unsigned int			us_id;
@@ -31,7 +31,6 @@ class user
 		std::queue<std::string>	send_q;	
 		std::queue<std::string>	recv_q;
 		//std::vector<chanel>	chanel_list;
-		log						user_log;
 
 	public:
 		user(unsigned int id);
@@ -46,7 +45,6 @@ class user
 		void				set_us_id(const unsigned int& serv_id);
 		const connection*	get_connection_p();
 		void				set_connection_p(const connection* conn_p);
-
 };
 
 #endif

@@ -3,7 +3,7 @@
 
 class server
 {
-	public:
+	private:
 		unsigned int	n_connections;
 		unsigned int	user_id;
 

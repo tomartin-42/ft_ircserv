@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 17:35:01 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/25 11:22:48 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/26 11:38:22 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ int main(void)
 		{
 			connection	in_connect(new_socket.extract_new_connection());
 			user		in_user(new_server.get_new_user_id());
-
-			//in_user.set_us_id(new_server.get_new_user_id()); //with user class public
-			//in_connect.set_c_user_id(new_server.get_new_user_id()); //Dual seter
 			connect_orquest.add_connection(in_connect);
 			connect_orquest.add_user(in_user);
 		}

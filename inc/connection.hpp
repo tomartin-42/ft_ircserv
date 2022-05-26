@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:13:50 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/25 14:03:18 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/26 11:41:29 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ class connection
 		void		add_log(bool sor, std::string msg);
 
 	public:
-	//	user						c_user;
 
 		connection(int in_fd);
 
