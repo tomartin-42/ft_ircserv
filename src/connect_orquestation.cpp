@@ -20,6 +20,8 @@ void	connect_orquestation::add_connection(user& new_user, connection& new_connec
 
 	aux = this->poll_list.add_pollfd_fd(new_connection.get_fd());
 	new_connection.set_poll_fd_point(aux);
+	new_connection.set_user_point(&new_user);
+	new_user.set_connection_p(&new_connection);
 	this->l_connections.insert(std::make_pair(new_connection.get_fd(), 
 			std::make_pair(new_user, new_connection)));
 }

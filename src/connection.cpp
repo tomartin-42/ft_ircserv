@@ -96,3 +96,14 @@ void	connection::set_poll_fd_point(pollfd* point)
 {
 	this->poll_fd_point = point;
 }
+
+
+const user*	connection::get_user_point()
+{
+	return(this->user_point);
+}
+
+void	connection::set_user_point(user* user_p)
+{
+	this->user_point = user_p;
+}

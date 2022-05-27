@@ -43,7 +43,8 @@ const connection*		user::get_connection_p()
 	return (this->connection_p);
 }
 
-void			user::set_connection_p(const connection* conn_p)
+void			user::set_connection_p(connection* conn_p)
 {
 	this->connection_p = conn_p;
 }
+

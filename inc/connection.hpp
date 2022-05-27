@@ -22,7 +22,10 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include "msg.hpp"
+#include "user.hpp"
 #include "ft_ircserv.hpp"
+
+class user;
 
 class connection
 {
@@ -33,6 +36,7 @@ class connection
 		msg							msg_send;	//msg_send queue
 		msg							msg_recv;	//msg_recv queue
 		std::vector<std::string>	log;		//comunication log
+		const user*					user_point;
 
 		void		add_log(bool sor, std::string msg);
 
@@ -54,6 +58,8 @@ class connection
 		bool		check_if_send_is_empty();
 		void		set_poll_fd_point(pollfd* point);
 		pollfd*		get_poll_fd_point();
+		const user*	get_user_point();
+		void		set_user_point(user* user_p);
 };
 
 #endif

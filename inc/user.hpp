@@ -13,12 +13,13 @@
 #ifndef _USER_HPP_
 # define _USER_HPP_
 
+#include "connection.hpp"
 #include <string>
 #include <queue>
 #include "ft_ircserv.hpp"
-#include "connection.hpp"
 #include "log.hpp"
 
+class connection;
 
 class user : public log
 {
@@ -44,7 +45,7 @@ class user : public log
 		void				set_type(const char& type);
 		void				set_us_id(const unsigned int& serv_id);
 		const connection*	get_connection_p();
-		void				set_connection_p(const connection* conn_p);
+		void				set_connection_p(connection* conn_p);
 };
 
 #endif
