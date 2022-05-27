@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 08:39:20 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/23 11:44:44 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/27 08:47:45 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <cstdio>
 #include <vector>
 #include <map>
+#include <utility>
 #include <poll.h>
 #include <iostream>
 
@@ -29,7 +30,7 @@ class connect_orquestation
 {
 	private:
 		//std::vector<connection>							l_connections;
-		std::map<int fd, std::pair<user, connection>>	l_connections;
+		std::map<int, std::pair<user, connection> >	l_connections;
 		poll_fd											poll_list;
 		
 		void	search_to_send();

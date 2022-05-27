@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 08:40:42 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/23 13:55:40 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/27 10:01:06 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ void	connect_orquestation::add_connection(user& new_user, connection& new_connec
 {
 	pollfd*	aux;
 
-	aux = this->poll_list.add_pollfd_fd(new_connect.get_fd());
-	new_connect.set_poll_fd_point(aux);
-	this->l_connections.insert(new_connection.get_fd, std::pair(new_user, new_connection);
+	aux = this->poll_list.add_pollfd_fd(new_connection.get_fd());
+	new_connection.set_poll_fd_point(aux);
+	this->l_connections.insert(std::make_pair(new_connection.get_fd(), 
+			std::make_pair(new_user, new_connection)));
 }
 
 //This function in responsible to check event in the 
@@ -41,10 +42,10 @@ void	connect_orquestation::search_to_send()
 	{
 		if(this->poll_list.polls[i].revents == POLLOUT)
 		{
-			std::map<l_connections>::iterator	it;
+			std::map<int, std::pair<user, connection> >::iterator	it;
 
 			it = this->l_connections.find(this->poll_list.polls[i].fd);
-			it.second->send_msg();//send_msg_queue
+			it->second.second.send_msg();//send_msg_queue
 			this->poll_list.polls[i].revents = -1;
 		}
 	}
@@ -58,10 +59,10 @@ void	connect_orquestation::search_to_recv()
 	{
 		if(this->poll_list.polls[i].revents == POLLIN)
 		{
-			std::map<l_connections>::iterator	it;
+			std::map<int, std::pair<user, connection> >::iterator	it;
 
 			it = this->l_connections.find(this->poll_list.polls[i].fd);
-			it.second->recvi_msg();//recv_msg_queue
+			it->second.second.recv_msg();//recv_msg_queue
 			this->poll_list.polls[i].revents = -1;
 		}
 	}
@@ -72,14 +73,14 @@ void	connect_orquestation::search_to_recv()
 //The datas of vector receive from connection class pollfd
 void	connect_orquestation::check_connection_status()
 {
-	std::map<l_connections>::iterator	it;
+	std::map<int, std::pair<user, connection> >::iterator	it;
 
 	for(it = l_connections.begin(); it != l_connections.end(); it++)
 	{
-		if(it.second->check_if_send_is_empty())
-			poll_list.set_pollfd_event(it.second->get_fd(), POLLIN);
+		if(it->second.second.check_if_send_is_empty())
+			poll_list.set_pollfd_event(it->second.second.get_fd(), POLLIN);
 		else
-			poll_list.set_pollfd_event(it.second->get_fd(), POLLOUT);
+			poll_list.set_pollfd_event(it->second.second.get_fd(), POLLOUT);
 	}
 }
 
@@ -93,11 +94,11 @@ void	connect_orquestation::gestion_communication()
 
 void	connect_orquestation::print_msgs()
 {
-	std::map<l_connections>::iterator	it;
+	std::map<int, std::pair<user, connection> >::iterator	it;
 
 	for(it = l_connections.begin(); it != l_connections.end(); it++)
 	{
-		it.second->print_msg_recv();
-		it.second->print_msg_send();
+		it->second.second.print_msg_recv();
+		it->second.second.print_msg_send();
 	}
 }
