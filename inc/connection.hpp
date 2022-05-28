@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:13:50 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/28 13:44:32 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/28 14:27:30 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,13 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include "msg.hpp"
+#include "log.hpp"
 #include "user.hpp"
 #include "ft_ircserv.hpp"
 
 class user;
 
-class connection
+class connection : public log
 {
 	private:
 		const int					fd;
@@ -60,6 +61,8 @@ class connection
 		pollfd*		get_poll_fd_point();
 		const user*	get_user_point();
 		void		set_user_point(user* user_p);
+
+		void		set_file_base_name();
 };
 
 #endif

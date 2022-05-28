@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:40:09 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/28 13:42:26 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/28 14:40:39 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ ssize_t connection::send_msg()
 	
 	if (!msg_send.check_if_empty())
 	{
+		this->add_msg_log(this->msg_send.extract_msg_not_del(), 
+				std::string("con_recv" + itoa(this->get_fd())));
 		aux = send(this->fd, (this->msg_send.extract_msg_to_char()), 512, MSG_DONTWAIT);
 	}
 	return aux;
@@ -50,6 +52,7 @@ std::string	connection::recv_msg()
 	bzero(buff, 512);
 	recv(this->fd, &buff, 512, MSG_DONTWAIT);
 	this->msg_recv.add_msg(buff);
+	this->add_msg_log(std::string(buff), std::string("con_send " + itoa(this->get_fd())));
 	//this->add_log(RECV, std::string(buff));
 	return std::string(buff);
 }
@@ -105,4 +108,8 @@ const user*	connection::get_user_point()
 void	connection::set_user_point(user* user_p)
 {
 	this->user_point = user_p;
+}
+void	connection::set_file_base_name()
+{
+	this->file_base_name = "connection";
 }

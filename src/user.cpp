@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:28:27 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/28 13:38:21 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/28 14:24:50 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,5 @@ void			user::set_connection_p(connection* conn_p)
 
 void			user::set_file_base_name()
 {
-	this->file_base_name = "USER ";
+	this->file_base_name = "user";
 }

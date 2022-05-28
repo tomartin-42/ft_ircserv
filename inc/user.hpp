@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 07:56:23 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/28 13:39:10 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/28 14:24:23 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ class user : public log
 		void				set_connection_p(connection* conn_p);
 
 		void				set_file_base_name();
-
-
 };
 
 #endif

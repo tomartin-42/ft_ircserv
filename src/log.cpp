@@ -6,13 +6,13 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 09:52:14 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/28 12:07:59 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/28 14:29:31 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "log.hpp"
 
-void	log::add_msg(const std::string& msg, const std::string& head)
+void	log::add_msg_log(const std::string& msg, const std::string& head)
 {
 	this->log_list.push(head + "->" + msg);
 }

@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 09:52:11 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/28 12:07:56 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/28 14:33:56 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class log
 		std::string				file_base_name;
 	
 	public:
-		void				add_msg(const std::string& msg, const std::string& head);
+		void				add_msg_log(const std::string& msg, const std::string& head);
 		void				print_all_queue();
 		const std::string	get_file_base_name();
 		virtual void		set_file_base_name() = 0; //seter to get file name;

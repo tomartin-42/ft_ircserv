@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 18:01:05 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/22 18:01:17 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/28 14:34:40 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class msg
 		void		add_msg(const char* str);
 		void		add_msg(const std::string str);
 		std::string	extract_msg();
+		std::string	extract_msg_not_del();
 		const char*	extract_msg_to_char();
 		void		print_all_msg();
 };

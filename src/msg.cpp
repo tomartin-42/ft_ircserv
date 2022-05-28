@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:51:19 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/23 12:02:51 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/28 14:35:51 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ std::string	msg::extract_msg()
 	aux = this->msg_q.front();
 	this->msg_q.pop();
 	return aux;
+}
+
+std::string	msg::extract_msg_not_del()
+{
+	return(this->msg_q.front());
 }
 
 const char*	msg::extract_msg_to_char()
