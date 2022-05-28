@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:40:09 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/26 08:53:38 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/28 13:42:26 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ std::string	connection::recv_msg()
 	bzero(buff, 512);
 	recv(this->fd, &buff, 512, MSG_DONTWAIT);
 	this->msg_recv.add_msg(buff);
-	this->add_log(RECV, std::string(buff));
+	//this->add_log(RECV, std::string(buff));
 	return std::string(buff);
 }
 
-void	connection::add_log(bool sor, std::string msg)
+/*void	connection::add_log(bool sor, std::string msg)
 {
 	std::string	aux;
 
@@ -71,7 +71,7 @@ void connection::print_log()
 
 	for(it = this->log.begin(); it != this->log.end(); it++)
 		std::cout << this->fd << " " << *it << std::endl;
-}
+}*/
 	
 void	connection::print_msg_recv()
 {
@@ -96,7 +96,6 @@ void	connection::set_poll_fd_point(pollfd* point)
 {
 	this->poll_fd_point = point;
 }
-
 
 const user*	connection::get_user_point()
 {

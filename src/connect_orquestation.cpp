@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 08:40:42 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/27 10:01:06 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/28 13:33:23 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,3 +104,4 @@ void	connect_orquestation::print_msgs()
 		it->second.second.print_msg_send();
 	}
 }
+

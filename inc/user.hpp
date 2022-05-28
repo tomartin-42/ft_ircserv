@@ -6,16 +6,17 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 07:56:23 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/26 09:51:42 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/28 13:39:10 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _USER_HPP_
 # define _USER_HPP_
 
-#include "connection.hpp"
 #include <string>
 #include <queue>
+#include "msg.hpp"
+#include "connection.hpp"
 #include "ft_ircserv.hpp"
 #include "log.hpp"
 
@@ -29,8 +30,6 @@ class user : public log
 		std::string				nick;
 		std::string 			name;
 		char					type;
-		std::queue<std::string>	send_q;	
-		std::queue<std::string>	recv_q;
 		//std::vector<chanel>	chanel_list;
 
 	public:
@@ -46,6 +45,10 @@ class user : public log
 		void				set_us_id(const unsigned int& serv_id);
 		const connection*	get_connection_p();
 		void				set_connection_p(connection* conn_p);
+
+		void				set_file_base_name();
+
+
 };
 
 #endif

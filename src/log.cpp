@@ -6,27 +6,15 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 09:52:14 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/26 11:34:22 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/28 12:07:59 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "log.hpp"
 
-log::log() {}
-
-log::log(unsigned int name) : log_name(name) {}
-
-unsigned int	log::get_log_name() const
+void	log::add_msg(const std::string& msg, const std::string& head)
 {
-	return (this->log_name);
-}
-
-void	log::add_msg(const std::string& msg)
-{
-	std::string	aux;
-
-	aux = itoa(this->get_log_name()) + "->" + msg;
-	this->log_list.push(aux);
+	this->log_list.push(head + "->" + msg);
 }
 
 void	log::print_all_queue()
@@ -35,9 +23,14 @@ void	log::print_all_queue()
 
 	while(!aux.empty())
 	{
-		std::cout << aux.front();
+		std::cout << aux.front() << std::endl;
 		aux.pop();
 	}
+}
+
+const std::string	log::get_file_base_name()
+{
+	return (this->file_base_name);
 }
 
 void log::put_in_file_queue()
@@ -46,12 +39,12 @@ void log::put_in_file_queue()
 	std::ofstream file;
 	std::string	s_file;
 
-	s_file = "log" + itoa(this->get_log_name()) + "txt";
+	s_file = this->get_file_base_name() + ".log";
 	
 	file.open(s_file.c_str(), std::ios::trunc);
 	while(!aux.empty())
 	{
-		file << this->get_log_name() << "->" << aux.front() << std::endl;
+		file << aux.front() << std::endl;
 		aux.pop();
 	}
 	file.close();

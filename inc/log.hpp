@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 09:52:11 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/26 11:38:11 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/28 12:07:56 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,15 @@ class log
 {
 	private:
 		std::queue<std::string> log_list;
-		unsigned int			log_name;
+	protected:
+		std::string				file_base_name;
 	
 	public:
-		log();
-		log(unsigned int log_name);
-
-		unsigned int	get_log_name() const;
-		void			add_msg(const std::string& msg);
-		void			print_all_queue();
-		void			put_in_file_queue();
+		void				add_msg(const std::string& msg, const std::string& head);
+		void				print_all_queue();
+		const std::string	get_file_base_name();
+		virtual void		set_file_base_name() = 0; //seter to get file name;
+		void				put_in_file_queue();
 };
 
 #endif

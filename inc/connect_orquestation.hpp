@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 08:39:20 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/27 08:47:45 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/28 13:34:52 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef std::pair<user, connection>	us_con;
 class connect_orquestation
 {
 	private:
-		//std::vector<connection>							l_connections;
 		std::map<int, std::pair<user, connection> >	l_connections;
 		poll_fd											poll_list;
 		
