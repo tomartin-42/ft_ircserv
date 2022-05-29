@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:13:50 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/28 14:27:30 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/29 15:27:22 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,8 @@ class connection : public log
 		pollfd*						poll_fd_point;
 		msg							msg_send;	//msg_send queue
 		msg							msg_recv;	//msg_recv queue
-		//std::vector<std::string>	log;		//comunication log
 		const user*					user_point;
 
-		//void		add_log(bool sor, std::string msg);
 
 	public:
 
@@ -53,7 +51,6 @@ class connection : public log
 		void		ready_to_send();
 		ssize_t		send_msg();
 		std::string	recv_msg();
-		//void		print_log();
 		void		print_msg_recv();
 		void		print_msg_send();
 		bool		check_if_send_is_empty();

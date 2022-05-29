@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:40:09 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/28 14:40:39 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/29 19:43:32 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ ssize_t connection::send_msg()
 	{
 		this->add_msg_log(this->msg_send.extract_msg_not_del(), 
 				std::string("con_recv" + itoa(this->get_fd())));
-		aux = send(this->fd, (this->msg_send.extract_msg_to_char()), 512, MSG_DONTWAIT);
+		std::cout << "NO = " << this->msg_send.extract_msg_not_del() << std::endl;
+		std::cout << "leng = " << this->msg_send.msg_front_len() << std::endl;
+		aux = send(this->fd, (this->msg_send.extract_msg_to_char()), this->msg_send.msg_front_len(), MSG_DONTWAIT);
 	}
 	return aux;
 }
@@ -52,30 +54,13 @@ std::string	connection::recv_msg()
 	bzero(buff, 512);
 	recv(this->fd, &buff, 512, MSG_DONTWAIT);
 	this->msg_recv.add_msg(buff);
+	this->msg_send.add_msg(std::string("HOLA\0"));
+	this->msg_send.add_msg(buff);
+	this->msg_send.add_msg(std::string("HOLA\x0d\x0a"));
 	this->add_msg_log(std::string(buff), std::string("con_send " + itoa(this->get_fd())));
-	//this->add_log(RECV, std::string(buff));
 	return std::string(buff);
 }
 
-/*void	connection::add_log(bool sor, std::string msg)
-{
-	std::string	aux;
-
-	if(sor == 0)
-		aux = this->get_time() + " SEND " + msg;
-	else if(sor == 1)
-		aux= this->get_time() + " RECV " + msg; 
-	this->log.push_back(aux);
-}
-
-void connection::print_log()
-{
-	std::vector<std::string>::iterator	it;
-
-	for(it = this->log.begin(); it != this->log.end(); it++)
-		std::cout << this->fd << " " << *it << std::endl;
-}*/
-	
 void	connection::print_msg_recv()
 {
 	std::cout << "RECV QUEUE FD:" << this->get_fd() << std::endl;
