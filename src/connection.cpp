@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:40:09 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/29 19:43:32 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/30 13:33:43 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ ssize_t connection::send_msg()
 	{
 		this->add_msg_log(this->msg_send.extract_msg_not_del(), 
 				std::string("con_recv" + itoa(this->get_fd())));
-		std::cout << "NO = " << this->msg_send.extract_msg_not_del() << std::endl;
-		std::cout << "leng = " << this->msg_send.msg_front_len() << std::endl;
-		aux = send(this->fd, (this->msg_send.extract_msg_to_char()), this->msg_send.msg_front_len(), MSG_DONTWAIT);
+		std::cout << "LEN= " << this->msg_send.msg_front_len() << std::endl;
+		aux = send(this->fd, (this->msg_send.extract_msg_to_char().c_str()), this->msg_send.msg_front_len(), MSG_DONTWAIT);
+		this->msg_send.pop_msg();
 	}
 	return aux;
 }
@@ -54,9 +54,10 @@ std::string	connection::recv_msg()
 	bzero(buff, 512);
 	recv(this->fd, &buff, 512, MSG_DONTWAIT);
 	this->msg_recv.add_msg(buff);
-	this->msg_send.add_msg(std::string("HOLA\0"));
-	this->msg_send.add_msg(buff);
-	this->msg_send.add_msg(std::string("HOLA\x0d\x0a"));
+	this->msg_send.add_msg(std::string(":HOLA"));
+	this->msg_send.add_msg(std::string(":Welcome to the Internet Relay Network tomartin!tomartin@teamAchat.com"));
+	//this->msg_send.add_msg(buff);
+	//this->msg_send.add_msg(std::string("HOLA\x0d\x0a"));
 	this->add_msg_log(std::string(buff), std::string("con_send " + itoa(this->get_fd())));
 	return std::string(buff);
 }

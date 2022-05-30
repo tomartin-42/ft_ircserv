@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 18:01:05 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/29 17:20:28 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/05/30 13:33:12 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ class msg
 		void		add_msg(const std::string str);
 		std::string	extract_msg();
 		std::string	extract_msg_not_del();
-		const char*	extract_msg_to_char();
+		std::string extract_msg_to_char();
 		void		print_all_msg();
 		int			msg_q_size();
 		int			msg_front_len();
+		void		pop_msg();
 };
 
 #endif
