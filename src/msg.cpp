@@ -44,22 +44,7 @@ void	msg::add_msg(const std::string str)
 
 std::string	msg::extract_msg()
 {
-	std::string	aux;
-
-	aux = this->msg_q.front();
-	return aux;
-}
-
-std::string	msg::extract_msg_not_del()
-{
-	return(this->msg_q.front());
-}
-
-std::string	msg::extract_msg_to_char()
-{
-	std::string	aux(this->msg_q.front());
-
-	return aux;
+	return this->msg_q.front();
 }
 
 int	msg::number_msg() const

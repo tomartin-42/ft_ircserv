@@ -31,8 +31,6 @@ class msg
 		void		add_msg(const char* str);
 		void		add_msg(const std::string str);
 		std::string	extract_msg();
-		std::string	extract_msg_not_del();
-		std::string extract_msg_to_char();
 		void		print_all_msg();
 		int			msg_q_size();
 		int			msg_front_len();

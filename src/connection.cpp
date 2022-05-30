@@ -38,10 +38,9 @@ ssize_t connection::send_msg()
 	
 	if (!msg_send.check_if_empty())
 	{
-		this->add_msg_log(this->msg_send.extract_msg_not_del(), 
+		this->add_msg_log(this->msg_send.extract_msg(), 
 				std::string("con_recv" + itoa(this->get_fd())));
-		std::cout << "LEN= " << this->msg_send.msg_front_len() << std::endl;
-		aux = send(this->fd, (this->msg_send.extract_msg_to_char().c_str()), this->msg_send.msg_front_len(), MSG_DONTWAIT);
+		aux = send(this->fd, (this->msg_send.extract_msg().c_str()), this->msg_send.msg_front_len(), MSG_DONTWAIT);
 		this->msg_send.pop_msg();
 	}
 	return aux;
