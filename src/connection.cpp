@@ -49,16 +49,18 @@ ssize_t connection::send_msg()
 std::string	connection::recv_msg()
 {
 	char	buff[512];
+	ssize_t aux = 0;
 
 	bzero(buff, 512);
-	recv(this->fd, &buff, 512, MSG_DONTWAIT);
-	this->msg_recv.add_msg(buff);
-	this->msg_send.add_msg(std::string(":HOLA"));
-	this->msg_send.add_msg(std::string(":Welcome to the Internet Relay Network tomartin!tomartin@teamAchat.com"));
-	//this->msg_send.add_msg(buff);
-	//this->msg_send.add_msg(std::string("HOLA\x0d\x0a"));
-	this->add_msg_log(std::string(buff), std::string("con_send " + itoa(this->get_fd())));
-	return std::string(buff);
+	aux = recv(this->fd, &buff, 512, MSG_DONTWAIT);
+	if(aux > 0)
+	{
+		this->msg_recv.add_msg(buff);
+		this->msg_send.add_msg(std::string(buff));
+		this->add_msg_log(std::string(buff), std::string("con_send " + itoa(this->get_fd())));
+		return std::string(buff);
+	}
+	return std::string("");
 }
 
 void	connection::print_msg_recv()
