@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:40:09 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/30 13:33:43 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/06/02 11:15:21 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ std::string	connection::recv_msg()
 	if(aux > 0)
 	{
 		this->msg_recv.add_msg(buff);
-		this->msg_send.add_msg(std::string(buff));
+		this->msg_send.add_msg(":c3r2s6.42madrid.com 001 tomartin :Welcome tomartin!tomartin@tomartin\r\n");
+		this->msg_send.add_msg(":c3r2s6.42madrid.com 002 tomartin :Your server is c3r2s6.42madrid.com version 0.1\r\n");
+		this->msg_send.add_msg(":c3r2s6.42madrid.com 003 tomartin :This server was created 06-02-2022\r\n");
+		this->msg_send.add_msg(":c3r2s6.42madrid.com 004 tomartin :c3r2s6.42madrid.com 0.1 all all\r\n");
 		this->add_msg_log(std::string(buff), std::string("con_send " + itoa(this->get_fd())));
 		return std::string(buff);
 	}

@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:13:09 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/26 11:33:12 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/06/02 11:15:27 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <string>
 
+#define	HOST_NAME	"irc.teamA.com"
 #define	MAX_CONNECTIONS	128
 
 //----------------Send o Recv-------------------//
