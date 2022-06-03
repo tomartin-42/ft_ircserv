@@ -68,7 +68,7 @@
 # define RPL_TRACEUNKNOWN(pseudo) ("???? 1 " + pseudo + "\r\n")
 # define RPL_TRACEOPERATOR(pseudo) ("Oper 1 " + pseudo + "\r\n")
 # define RPL_TRACEUSER(pseudo) ("User 1 " + pseudo + "\r\n")
-# define RPL_TRACESERVER(server_name) ("Serv 1 0S 0C " + server_name + " *!*@" + server_name + " V" + PROTOCOL_VERSION + "\r\n")
+# define RPL_TRACESERVER(server_name) ("Serv 1 0S 0C " + server_name + " *!*@" + server_name + " V" + VERSION + "\r\n")
 # define RPL_TRACENEWTYPE(new_type, name) (new_type + " 0 " + name + "\r\n")
 # define RPL_TRACELOG(file_log, debug_level) ("File " + file_log + " " + debug_level + "\r\n")
 # define RPL_TRACEEND(server_name, version_debug) (server_name + " " + version_debug + " :End of TRACE\r\n")

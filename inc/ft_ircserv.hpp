@@ -16,6 +16,7 @@
 #include <string>
 
 #define	HOST_NAME	"irc.teamA.com"
+#define	VERSION		"1.0"
 #define	MAX_CONNECTIONS	128
 
 //----------------Send o Recv-------------------//
