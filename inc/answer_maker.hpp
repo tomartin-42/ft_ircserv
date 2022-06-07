@@ -26,6 +26,7 @@ class answer_maker
 		std::string	arg4;
 		std::string sample;
 		
+		std::string generate_code(int i) const;
 	public:
 		answer_maker(std::string ar1, std::string ar2, std::string ar3, std::string ar4);
 		std::string	answ(int cde);
