@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:13:50 by tomartin          #+#    #+#             */
-/*   Updated: 2022/05/29 15:27:22 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/06/04 13:37:22 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 #include "log.hpp"
 #include "user.hpp"
 #include "ft_ircserv.hpp"
+#include "answer_maker.hpp"
 
 class user;
 

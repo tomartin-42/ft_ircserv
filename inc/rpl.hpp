@@ -6,7 +6,7 @@
 /*   By: tomartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 11:45:18 by tomartin          #+#    #+#             */
-/*   Updated: 2022/06/03 11:53:45 by tomartin         ###   ########.fr       */
+/*   Updated: 2022/06/04 13:35:14 by tomartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define RPL_WELCOME(nick) (":Welcome to the Internet Relay Network " + nick + "\r\n")
 # define RPL_YOURHOST(servername, version) (":Your host is " + servername + ", running version " + version + "\r\n")
 # define RPL_MYINFO(servername, version, usr_modes, chann_modes) (":" + servername + " " + version + " " + usr_modes + " " + chann_modes + "\r\n")
-# define RPL_CREATED(date) (":This server was created " + date + "\r\n");
+# define RPL_CREATED(date) (":This server was created " + date + "\r\n")
 # define RPL_BOUNCE(server_name, port) ("Try server " + server_name + ", port " + port + "\r\n")
 # define RPL_NONE() ("\r\n") //300
 # define RPL_USERHOST(userhost_list) (userhost_list + "\r\n") //<réponse> ::= <pseudo>['*'] '=' <'+'|'-'><hôte>
