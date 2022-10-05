@@ -14,13 +14,15 @@
 
 int	sending::send_singel_msg(int fd, std::string msg)
 {
-	pollfd	pollset;
+    (void)fd;
+    (void)msg;
+/*	pollfd	pollset;
 	int		check;
 
 	pollset.fd = fd;
 	pollset.events = POLLOUT;
-	check = poll(&pollset, 1, 500);
+	check = poll(&pollset, 1, 1000);
 	if(check > 0)
-		send(fd, (char *)&(msg[0]), msg.size(), MSG_DONTWAIT);
-	return 0;
+		send(fd, (char *)&(msg[0]), msg.size(), MSG_DONTWAIT);*/
+	return 0; 
 }			

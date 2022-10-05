@@ -26,7 +26,7 @@ class sending
 		std::vector<pollfd> poll_fd;
 
 	public:
-		int	send_singel_msg(int fd, std::string msg);
+    	int	send_singel_msg(int fd, std::string msg);
 };
 
 #endif

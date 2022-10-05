@@ -37,8 +37,10 @@ class connection : public log
 		pollfd*						poll_fd_point;
 		msg							msg_send;	//msg_send queue
 		msg							msg_recv;	//msg_recv queue
-		const user*					user_point;
-
+		const user*					user_point; //I think to change pointer to 
+                                                //inheritance from gestion of user
+                                                //I think is beter for abstraction 
+                                                //c++ concept
 
 	public:
 
