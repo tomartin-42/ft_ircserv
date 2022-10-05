@@ -1,0 +1,263 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/System/Volumes/Data/sgoinfre/students/tomartin/ft_ircserv/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/5d506a1a/
+$(NAME)	Makefile	/^$(NAME): $(OBJ)$/;"	t
+$(OBJ_DIR)%.o	Makefile	/^$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $/;"	t
+BLU	Makefile	/^BLU = \\033[0;34m$/;"	m
+CXX	Makefile	/^CXX = g++ -std=c++98$/;"	m
+DEP	Makefile	/^DEP = $(OBJ:.o=.d)$/;"	m
+GRN	Makefile	/^GRN = \\033[0;32m$/;"	m
+HOST_NAME	inc/ft_ircserv.hpp	/^#define	HOST_NAME	/;"	d
+LDFLAGS	Makefile	/^LDFLAGS = -fsanitize=address$/;"	m
+MAX_CONNECTIONS	inc/ft_ircserv.hpp	/^#define	MAX_CONNECTIONS	/;"	d
+NAME	Makefile	/^NAME = ft_ircserv $/;"	m
+OBJ	Makefile	/^OBJ = $(patsubst $(SRC_DIR)%, $(OBJ_DIR)%, $(SRC:.cpp=.o))$/;"	m
+OBJ_DIR	Makefile	/^OBJ_DIR = obj\/$/;"	m
+OPERATOR	inc/ft_ircserv.hpp	/^#define OPERATOR /;"	d
+ORG	Makefile	/^ORG = \\033[38;5;202m$/;"	m
+RECV	inc/ft_ircserv.hpp	/^#define RECV /;"	d
+RED	Makefile	/^RED = \\033[0;31m$/;"	m
+RESET	Makefile	/^RESET = \\033[0m                        $/;"	m
+RPL_ADMINEMAIL	inc/rpl.hpp	/^# define RPL_ADMINEMAIL(/;"	d
+RPL_ADMINLOC1	inc/rpl.hpp	/^# define RPL_ADMINLOC1(/;"	d
+RPL_ADMINLOC2	inc/rpl.hpp	/^# define RPL_ADMINLOC2(/;"	d
+RPL_ADMINME	inc/rpl.hpp	/^# define RPL_ADMINME(/;"	d
+RPL_AWAY	inc/rpl.hpp	/^# define RPL_AWAY(/;"	d
+RPL_BANLIST	inc/rpl.hpp	/^# define RPL_BANLIST(/;"	d
+RPL_BOUNCE	inc/rpl.hpp	/^# define RPL_BOUNCE(/;"	d
+RPL_CHANNELMODEIS	inc/rpl.hpp	/^# define RPL_CHANNELMODEIS(/;"	d
+RPL_CREATED	inc/rpl.hpp	/^# define RPL_CREATED(/;"	d
+RPL_CREATIONTIME	inc/rpl.hpp	/^# define RPL_CREATIONTIME(/;"	d
+RPL_ENDOFBANLIST	inc/rpl.hpp	/^# define RPL_ENDOFBANLIST(/;"	d
+RPL_ENDOFINFO	inc/rpl.hpp	/^# define RPL_ENDOFINFO(/;"	d
+RPL_ENDOFLINKS	inc/rpl.hpp	/^# define RPL_ENDOFLINKS(/;"	d
+RPL_ENDOFMOTD	inc/rpl.hpp	/^# define RPL_ENDOFMOTD(/;"	d
+RPL_ENDOFNAMES	inc/rpl.hpp	/^# define RPL_ENDOFNAMES(/;"	d
+RPL_ENDOFSTATS	inc/rpl.hpp	/^# define RPL_ENDOFSTATS(/;"	d
+RPL_ENDOFUSERS	inc/rpl.hpp	/^# define RPL_ENDOFUSERS(/;"	d
+RPL_ENDOFWHO	inc/rpl.hpp	/^# define RPL_ENDOFWHO(/;"	d
+RPL_ENDOFWHOIS	inc/rpl.hpp	/^# define RPL_ENDOFWHOIS(/;"	d
+RPL_ENDOFWHOWAS	inc/rpl.hpp	/^# define RPL_ENDOFWHOWAS(/;"	d
+RPL_INFO	inc/rpl.hpp	/^# define RPL_INFO(/;"	d
+RPL_INVITING	inc/rpl.hpp	/^# define RPL_INVITING(/;"	d
+RPL_ISON	inc/rpl.hpp	/^# define RPL_ISON(/;"	d
+RPL_LINKS	inc/rpl.hpp	/^# define RPL_LINKS(/;"	d
+RPL_LIST	inc/rpl.hpp	/^# define RPL_LIST(/;"	d
+RPL_LISTEND	inc/rpl.hpp	/^# define RPL_LISTEND(/;"	d
+RPL_LISTSTART	inc/rpl.hpp	/^# define RPL_LISTSTART(/;"	d
+RPL_LUSERCHANNELS	inc/rpl.hpp	/^# define RPL_LUSERCHANNELS(/;"	d
+RPL_LUSERCLIENT	inc/rpl.hpp	/^# define RPL_LUSERCLIENT(/;"	d
+RPL_LUSERME	inc/rpl.hpp	/^# define RPL_LUSERME(/;"	d
+RPL_LUSEROP	inc/rpl.hpp	/^# define RPL_LUSEROP(/;"	d
+RPL_LUSERUNKNOWN	inc/rpl.hpp	/^# define RPL_LUSERUNKNOWN(/;"	d
+RPL_MOTD	inc/rpl.hpp	/^# define RPL_MOTD(/;"	d
+RPL_MOTDSTART	inc/rpl.hpp	/^# define RPL_MOTDSTART(/;"	d
+RPL_MYINFO	inc/rpl.hpp	/^# define RPL_MYINFO(/;"	d
+RPL_NAMREPLY	inc/rpl.hpp	/^# define RPL_NAMREPLY(/;"	d
+RPL_NONE	inc/rpl.hpp	/^# define RPL_NONE(/;"	d
+RPL_NOTOPIC	inc/rpl.hpp	/^# define RPL_NOTOPIC(/;"	d
+RPL_NOUSERS	inc/rpl.hpp	/^# define RPL_NOUSERS(/;"	d
+RPL_NOWAWAY	inc/rpl.hpp	/^# define RPL_NOWAWAY(/;"	d
+RPL_REHASHING	inc/rpl.hpp	/^# define RPL_REHASHING(/;"	d
+RPL_STATSCLINE	inc/rpl.hpp	/^# define RPL_STATSCLINE(/;"	d
+RPL_STATSCOMMANDS	inc/rpl.hpp	/^# define RPL_STATSCOMMANDS(/;"	d
+RPL_STATSHLINE	inc/rpl.hpp	/^# define RPL_STATSHLINE(/;"	d
+RPL_STATSILINE	inc/rpl.hpp	/^# define RPL_STATSILINE(/;"	d
+RPL_STATSKLINE	inc/rpl.hpp	/^# define RPL_STATSKLINE(/;"	d
+RPL_STATSLINKINFO	inc/rpl.hpp	/^# define RPL_STATSLINKINFO(/;"	d
+RPL_STATSLLINE	inc/rpl.hpp	/^# define RPL_STATSLLINE(/;"	d
+RPL_STATSNLINE	inc/rpl.hpp	/^# define RPL_STATSNLINE(/;"	d
+RPL_STATSOLINE	inc/rpl.hpp	/^# define RPL_STATSOLINE(/;"	d
+RPL_STATSUPTIME	inc/rpl.hpp	/^# define RPL_STATSUPTIME(/;"	d
+RPL_STATSYLINE	inc/rpl.hpp	/^# define RPL_STATSYLINE(/;"	d
+RPL_SUMMONING	inc/rpl.hpp	/^# define RPL_SUMMONING(/;"	d
+RPL_TIME	inc/rpl.hpp	/^# define RPL_TIME(/;"	d
+RPL_TOPIC	inc/rpl.hpp	/^# define RPL_TOPIC(/;"	d
+RPL_TRACECONNECTING	inc/rpl.hpp	/^# define RPL_TRACECONNECTING(/;"	d
+RPL_TRACEEND	inc/rpl.hpp	/^# define RPL_TRACEEND(/;"	d
+RPL_TRACEHANDSHAKE	inc/rpl.hpp	/^# define RPL_TRACEHANDSHAKE(/;"	d
+RPL_TRACELINK	inc/rpl.hpp	/^# define RPL_TRACELINK(/;"	d
+RPL_TRACELOG	inc/rpl.hpp	/^# define RPL_TRACELOG(/;"	d
+RPL_TRACENEWTYPE	inc/rpl.hpp	/^# define RPL_TRACENEWTYPE(/;"	d
+RPL_TRACEOPERATOR	inc/rpl.hpp	/^# define RPL_TRACEOPERATOR(/;"	d
+RPL_TRACESERVER	inc/rpl.hpp	/^# define RPL_TRACESERVER(/;"	d
+RPL_TRACEUNKNOWN	inc/rpl.hpp	/^# define RPL_TRACEUNKNOWN(/;"	d
+RPL_TRACEUSER	inc/rpl.hpp	/^# define RPL_TRACEUSER(/;"	d
+RPL_UMODEIS	inc/rpl.hpp	/^# define RPL_UMODEIS(/;"	d
+RPL_UNAWAY	inc/rpl.hpp	/^# define RPL_UNAWAY(/;"	d
+RPL_USERHOST	inc/rpl.hpp	/^# define RPL_USERHOST(/;"	d
+RPL_USERSSTART	inc/rpl.hpp	/^# define RPL_USERSSTART(/;"	d
+RPL_VERSION	inc/rpl.hpp	/^# define RPL_VERSION(/;"	d
+RPL_WELCOME	inc/rpl.hpp	/^# define RPL_WELCOME(/;"	d
+RPL_WHOISCHANNELS	inc/rpl.hpp	/^# define RPL_WHOISCHANNELS(/;"	d
+RPL_WHOISIDLE	inc/rpl.hpp	/^# define RPL_WHOISIDLE(/;"	d
+RPL_WHOISOPERATOR	inc/rpl.hpp	/^# define RPL_WHOISOPERATOR(/;"	d
+RPL_WHOISUSER	inc/rpl.hpp	/^# define RPL_WHOISUSER(/;"	d
+RPL_WHOREPLY	inc/rpl.hpp	/^# define RPL_WHOREPLY(/;"	d
+RPL_WHOWASUSER	inc/rpl.hpp	/^# define RPL_WHOWASUSER(/;"	d
+RPL_YOUREOPER	inc/rpl.hpp	/^# define RPL_YOUREOPER(/;"	d
+RPL_YOURESERVICE	inc/rpl.hpp	/^# define RPL_YOURESERVICE(/;"	d
+RPL_YOURHOST	inc/rpl.hpp	/^# define RPL_YOURHOST(/;"	d
+SEND	inc/ft_ircserv.hpp	/^#define SEND /;"	d
+SRC	Makefile	/^SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))	$/;"	m
+SRC_DIR	Makefile	/^SRC_DIR = src\/$/;"	m
+SRC_FILES	Makefile	/^SRC_FILES = main.cpp my_socket.cpp sending.cpp connection.cpp \\$/;"	m
+UNAME	Makefile	/^UNAME := $(shell uname)$/;"	m
+UNKNOW	inc/ft_ircserv.hpp	/^#define UNKNOW /;"	d
+VERSION	inc/ft_ircserv.hpp	/^#define	VERSION	/;"	d
+WHT	Makefile	/^WHT = \\033[0;37m$/;"	m
+YEL	Makefile	/^YEL = \\033[0;33m$/;"	m
+_ANSWER_MAKER_HPP_	inc/answer_maker.hpp	/^# define _ANSWER_MAKER_HPP_$/;"	d
+_CONNECTION_HPP_	inc/connection.hpp	/^# define _CONNECTION_HPP_$/;"	d
+_CONNECT_ORQUESTATION_HPP_	inc/connect_orquestation.hpp	/^# define _CONNECT_ORQUESTATION_HPP_$/;"	d
+_FT_IRCSERV_HPP	inc/ft_ircserv.hpp	/^# define _FT_IRCSERV_HPP$/;"	d
+_LOG_HPP_	inc/log.hpp	/^# define _LOG_HPP_$/;"	d
+_MSG_HPP_	inc/msg.hpp	/^# define _MSG_HPP_$/;"	d
+_MY_SOCKET_HPP_	inc/my_socket.hpp	/^# define _MY_SOCKET_HPP_$/;"	d
+_POLL_FD_HPP_	inc/poll_fd.hpp	/^# define _POLL_FD_HPP_$/;"	d
+_RPL_HPP_	inc/rpl.hpp	/^# define _RPL_HPP_$/;"	d
+_SENDING_HPP_	inc/sending.hpp	/^# define _SENDING_HPP_$/;"	d
+_SERVER_HPP_	inc/server.hpp	/^# define _SERVER_HPP_$/;"	d
+_USER_HPP_	inc/user.hpp	/^# define _USER_HPP_$/;"	d
+accept_new_connect	src/my_socket.cpp	/^void	my_socket::accept_new_connect()$/;"	f	class:my_socket	typeref:typename:void
+add_connection	src/connect_orquestation.cpp	/^void	connect_orquestation::add_connection(user& new_user, connection& new_connection)$/;"	f	class:connect_orquestation	typeref:typename:void
+add_msg	src/msg.cpp	/^void	msg::add_msg(const char* str) $/;"	f	class:msg	typeref:typename:void
+add_msg	src/msg.cpp	/^void	msg::add_msg(const std::string str)$/;"	f	class:msg	typeref:typename:void
+add_msg_log	src/log.cpp	/^void	log::add_msg_log(const std::string& msg, const std::string& head)$/;"	f	class:log	typeref:typename:void
+add_new_connection	src/server.cpp	/^void	server::add_new_connection()$/;"	f	class:server	typeref:typename:void
+add_pollfd_fd	src/poll_fd.cpp	/^pollfd*	poll_fd::add_pollfd_fd(const int& n_fd)$/;"	f	class:poll_fd	typeref:typename:pollfd *
+all	Makefile	/^all: obj $(NAME) $/;"	t
+answ	src/answer_maker.cpp	/^std::string answer_maker::answ(int cde)$/;"	f	class:answer_maker	typeref:typename:std::string
+answer_maker	inc/answer_maker.hpp	/^class answer_maker$/;"	c
+answer_maker	src/answer_maker.cpp	/^answer_maker::answer_maker(std::string ar1, std::string ar2, std::string ar3, std::string ar4) :$/;"	f	class:answer_maker
+arg1	inc/answer_maker.hpp	/^		std::string	arg1;$/;"	m	class:answer_maker	typeref:typename:std::string
+arg2	inc/answer_maker.hpp	/^		std::string	arg2;$/;"	m	class:answer_maker	typeref:typename:std::string
+arg3	inc/answer_maker.hpp	/^		std::string	arg3;$/;"	m	class:answer_maker	typeref:typename:std::string
+arg4	inc/answer_maker.hpp	/^		std::string	arg4;$/;"	m	class:answer_maker	typeref:typename:std::string
+bonus	Makefile	/^bonus: all$/;"	t
+buff_aux	inc/msg.hpp	/^		std::string				buff_aux;$/;"	m	class:msg	typeref:typename:std::string
+c_time	inc/connection.hpp	/^		time_t						c_time;$/;"	m	class:connection	typeref:typename:time_t
+check_connection_status	src/connect_orquestation.cpp	/^void	connect_orquestation::check_connection_status()$/;"	f	class:connect_orquestation	typeref:typename:void
+check_if_empty	src/msg.cpp	/^bool	msg::check_if_empty() const$/;"	f	class:msg	typeref:typename:bool
+check_if_send_is_empty	src/connection.cpp	/^bool	connection::check_if_send_is_empty()$/;"	f	class:connection	typeref:typename:bool
+clean	Makefile	/^clean:$/;"	t
+connect_orquestation	inc/connect_orquestation.hpp	/^class connect_orquestation$/;"	c
+connection	inc/connection.hpp	/^class connection : public log$/;"	c
+connection	src/connection.cpp	/^connection::connection(int in_fd) : fd(in_fd)$/;"	f	class:connection
+connection_p	inc/user.hpp	/^		const connection*		connection_p;$/;"	m	class:user	typeref:typename:const connection *
+data_socket	inc/my_socket.hpp	/^		struct sockaddr_in		data_socket;$/;"	m	class:my_socket	typeref:struct:sockaddr_in
+data_socket_len	inc/my_socket.hpp	/^		int						data_socket_len; \/\/Need to accept function$/;"	m	class:my_socket	typeref:typename:int
+del_connection	src/server.cpp	/^void	server::del_connection() \/\/subtraction a conter of connections$/;"	f	class:server	typeref:typename:void
+dell_polls_element	src/poll_fd.cpp	/^void	poll_fd::dell_polls_element(const int& fd)$/;"	f	class:poll_fd	typeref:typename:void
+empty_pollfd	inc/poll_fd.hpp	/^		pollfd	empty_pollfd;$/;"	m	struct:poll_fd	typeref:typename:pollfd
+extract_msg	src/msg.cpp	/^std::string	msg::extract_msg()$/;"	f	class:msg	typeref:typename:std::string
+extract_new_connection	src/my_socket.cpp	/^connection	my_socket::extract_new_connection()$/;"	f	class:my_socket	typeref:typename:connection
+fclean	Makefile	/^fclean: clean$/;"	t
+fd	inc/connection.hpp	/^		const int					fd;$/;"	m	class:connection	typeref:typename:const int
+fd_is_in_polls	src/poll_fd.cpp	/^bool	poll_fd::fd_is_in_polls(const int& fd) const$/;"	f	class:poll_fd	typeref:typename:bool
+fds_connect_ready	inc/my_socket.hpp	/^		std::queue<int>			fds_connect_ready;$/;"	m	class:my_socket	typeref:typename:std::queue<int>
+fds_ready	inc/sending.hpp	/^		std::vector<int>	fds_ready;$/;"	m	class:sending	typeref:typename:std::vector<int>
+file_base_name	inc/log.hpp	/^		std::string				file_base_name;$/;"	m	class:log	typeref:typename:std::string
+gestion_communication	src/connect_orquestation.cpp	/^void	connect_orquestation::gestion_communication()$/;"	f	class:connect_orquestation	typeref:typename:void
+get_connection_p	src/user.cpp	/^const connection*		user::get_connection_p()$/;"	f	class:user	typeref:typename:const connection *
+get_fd	src/connection.cpp	/^int	connection::get_fd() const$/;"	f	class:connection	typeref:typename:int
+get_file_base_name	src/log.cpp	/^const std::string	log::get_file_base_name()$/;"	f	class:log	typeref:typename:const std::string
+get_msg	src/my_socket.cpp	/^std::string	my_socket::get_msg()$/;"	f	class:my_socket	typeref:typename:std::string
+get_n_connections	src/server.cpp	/^unsigned int server::get_n_connections() const$/;"	f	class:server	typeref:typename:unsigned int
+get_name	src/user.cpp	/^std::string		user::get_name() const $/;"	f	class:user	typeref:typename:std::string
+get_new_user_id	src/server.cpp	/^unsigned int	server::get_new_user_id()$/;"	f	class:server	typeref:typename:unsigned int
+get_next_msg	src/msg.cpp	/^std::string	msg::get_next_msg()$/;"	f	class:msg	typeref:typename:std::string
+get_nick	src/user.cpp	/^std::string		user::get_nick() const $/;"	f	class:user	typeref:typename:std::string
+get_pollfd_event	src/poll_fd.cpp	/^short	poll_fd::get_pollfd_event(const int& fd) const$/;"	f	class:poll_fd	typeref:typename:short
+get_pollfd_revent	src/poll_fd.cpp	/^short	poll_fd::get_pollfd_revent(const int& fd) const$/;"	f	class:poll_fd	typeref:typename:short
+get_pollfd_values	src/poll_fd.cpp	/^pollfd poll_fd::get_pollfd_values(const int& fd) const$/;"	f	class:poll_fd	typeref:typename:pollfd
+get_port	src/my_socket.cpp	/^int		my_socket::get_port() const \/\/ geter port$/;"	f	class:my_socket	typeref:typename:int
+get_time	src/connection.cpp	/^std::string	connection::get_time()$/;"	f	class:connection	typeref:typename:std::string
+get_type	src/user.cpp	/^char			user::get_type() const $/;"	f	class:user	typeref:typename:char
+get_user_point	src/connection.cpp	/^const user*	connection::get_user_point()$/;"	f	class:connection	typeref:typename:const user *
+head	inc/answer_maker.hpp	/^		std::string head;$/;"	m	class:answer_maker	typeref:typename:std::string
+init_socket	src/my_socket.cpp	/^void	my_socket::init_socket()$/;"	f	class:my_socket	typeref:typename:void
+itoa	inc/ft_ircserv.hpp	/^std::string itoa(T a)$/;"	f	typeref:typename:std::string
+l_connections	inc/connect_orquestation.hpp	/^		std::map<int, std::pair<user, connection> >	l_connections;$/;"	m	class:connect_orquestation	typeref:typename:std::map<int,std::pair<user,connection>>
+load_in_connections	src/my_socket.cpp	/^int	my_socket::load_in_connections()$/;"	f	class:my_socket	typeref:typename:int
+log	inc/log.hpp	/^class log$/;"	c
+log_list	inc/log.hpp	/^		std::queue<std::string> log_list;$/;"	m	class:log	typeref:typename:std::queue<std::string>
+main	src/demo_socket.cpp	/^int main(void)$/;"	f	typeref:typename:int
+main	src/main.cpp	/^int main(void)$/;"	f	typeref:typename:int
+msg	inc/msg.hpp	/^class msg$/;"	c
+msg_front_len	src/msg.cpp	/^int		msg::msg_front_len()$/;"	f	class:msg	typeref:typename:int
+msg_q	inc/msg.hpp	/^		std::queue<std::string>	msg_q;$/;"	m	class:msg	typeref:typename:std::queue<std::string>
+msg_q_size	src/msg.cpp	/^int		msg::msg_q_size()$/;"	f	class:msg	typeref:typename:int
+msg_queue	inc/my_socket.hpp	/^		std::queue<std::string>	msg_queue;$/;"	m	class:my_socket	typeref:typename:std::queue<std::string>
+msg_recv	inc/connection.hpp	/^		msg							msg_recv;	\/\/msg_recv queue$/;"	m	class:connection	typeref:typename:msg
+msg_send	inc/connection.hpp	/^		msg							msg_send;	\/\/msg_send queue$/;"	m	class:connection	typeref:typename:msg
+my_socket	inc/my_socket.hpp	/^class	my_socket$/;"	c
+my_socket	src/my_socket.cpp	/^my_socket::my_socket(const int port)$/;"	f	class:my_socket
+n_connections	inc/server.hpp	/^		unsigned int	n_connections;$/;"	m	class:server	typeref:typename:unsigned int
+name	inc/user.hpp	/^		std::string 			name;$/;"	m	class:user	typeref:typename:std::string
+nick	inc/user.hpp	/^		std::string				nick;$/;"	m	class:user	typeref:typename:std::string
+num_activate_fds	src/poll_fd.cpp	/^int	poll_fd::num_activate_fds() const$/;"	f	class:poll_fd	typeref:typename:int
+number_msg	src/msg.cpp	/^int	msg::number_msg() const$/;"	f	class:msg	typeref:typename:int
+obj	Makefile	/^obj:$/;"	t
+one_point_polls	src/poll_fd.cpp	/^pollfd* poll_fd::one_point_polls(const int& fd)$/;"	f	class:poll_fd	typeref:typename:pollfd *
+pending_connection	src/my_socket.cpp	/^bool	my_socket::pending_connection()$/;"	f	class:my_socket	typeref:typename:bool
+pointer_polls	src/poll_fd.cpp	/^pollfd*	poll_fd::pointer_polls()$/;"	f	class:poll_fd	typeref:typename:pollfd *
+poll_connections	src/connect_orquestation.cpp	/^int		connect_orquestation::poll_connections()$/;"	f	class:connect_orquestation	typeref:typename:int
+poll_fd	inc/my_socket.hpp	/^		pollfd					poll_fd;$/;"	m	class:my_socket	typeref:typename:pollfd
+poll_fd	inc/poll_fd.hpp	/^struct poll_fd$/;"	s
+poll_fd	inc/sending.hpp	/^		std::vector<pollfd> poll_fd;$/;"	m	class:sending	typeref:typename:std::vector<pollfd>
+poll_fd	src/poll_fd.cpp	/^poll_fd::poll_fd() $/;"	f	class:poll_fd
+poll_fd_point	inc/connection.hpp	/^		pollfd*						poll_fd_point;$/;"	m	class:connection	typeref:typename:pollfd *
+poll_fds	inc/sending.hpp	/^		std::vector<pollfd>	poll_fds;$/;"	m	class:sending	typeref:typename:std::vector<pollfd>
+poll_list	inc/connect_orquestation.hpp	/^		poll_fd											poll_list;$/;"	m	class:connect_orquestation	typeref:typename:poll_fd
+polls	inc/poll_fd.hpp	/^		pollfd	polls[MAX_CONNECTIONS];$/;"	m	struct:poll_fd	typeref:typename:pollfd[]
+pop_msg	src/msg.cpp	/^void	msg::pop_msg()$/;"	f	class:msg	typeref:typename:void
+port	inc/my_socket.hpp	/^		int						port;			\/\/Port when the server lisen	$/;"	m	class:my_socket	typeref:typename:int
+print	Makefile	/^print:$/;"	t
+print_all_msg	src/msg.cpp	/^void	msg::print_all_msg()$/;"	f	class:msg	typeref:typename:void
+print_all_queue	src/log.cpp	/^void	log::print_all_queue()$/;"	f	class:log	typeref:typename:void
+print_msg_queue	src/my_socket.cpp	/^void	my_socket::print_msg_queue()$/;"	f	class:my_socket	typeref:typename:void
+print_msg_recv	src/connection.cpp	/^void	connection::print_msg_recv()$/;"	f	class:connection	typeref:typename:void
+print_msg_send	src/connection.cpp	/^void	connection::print_msg_send()$/;"	f	class:connection	typeref:typename:void
+print_msgs	src/connect_orquestation.cpp	/^void	connect_orquestation::print_msgs()$/;"	f	class:connect_orquestation	typeref:typename:void
+put_in_file_queue	src/log.cpp	/^void log::put_in_file_queue()$/;"	f	class:log	typeref:typename:void
+re	Makefile	/^ re: fclean all$/;"	t
+recv_msg	src/connection.cpp	/^std::string	connection::recv_msg()$/;"	f	class:connection	typeref:typename:std::string
+search_to_recv	src/connect_orquestation.cpp	/^void	connect_orquestation::search_to_recv()$/;"	f	class:connect_orquestation	typeref:typename:void
+search_to_send	src/connect_orquestation.cpp	/^void	connect_orquestation::search_to_send()$/;"	f	class:connect_orquestation	typeref:typename:void
+send_msg	src/connection.cpp	/^ssize_t connection::send_msg()$/;"	f	class:connection	typeref:typename:ssize_t
+send_singel_msg	src/sending.cpp	/^int	sending::send_singel_msg(int fd, std::string msg)$/;"	f	class:sending	typeref:typename:int
+sending	inc/sending.hpp	/^class sending$/;"	c
+server	inc/server.hpp	/^class server$/;"	c
+server	src/server.cpp	/^server::server() : n_connections(0), user_id(0) {}$/;"	f	class:server
+set_connection_p	src/user.cpp	/^void			user::set_connection_p(connection* conn_p)$/;"	f	class:user	typeref:typename:void
+set_file_base_name	src/connection.cpp	/^void	connection::set_file_base_name()$/;"	f	class:connection	typeref:typename:void
+set_file_base_name	src/user.cpp	/^void			user::set_file_base_name()$/;"	f	class:user	typeref:typename:void
+set_name	src/user.cpp	/^void			user::set_name(const std::string& name) $/;"	f	class:user	typeref:typename:void
+set_nick	src/user.cpp	/^void			user::set_nick(const std::string& nick) $/;"	f	class:user	typeref:typename:void
+set_poll_fd_point	src/connection.cpp	/^void	connection::set_poll_fd_point(pollfd* point)$/;"	f	class:connection	typeref:typename:void
+set_pollfd_event	src/poll_fd.cpp	/^void	poll_fd::set_pollfd_event(const int& fd, const short& n_event)$/;"	f	class:poll_fd	typeref:typename:void
+set_pollfd_revent	src/poll_fd.cpp	/^void	poll_fd::set_pollfd_revent(const int& fd, const short& n_revent)$/;"	f	class:poll_fd	typeref:typename:void
+set_time	src/connection.cpp	/^void connection::set_time()$/;"	f	class:connection	typeref:typename:void
+set_type	src/user.cpp	/^void			user::set_type(const char& type) $/;"	f	class:user	typeref:typename:void
+set_us_id	src/user.cpp	/^void			user::set_us_id(const unsigned int& serv_id) $/;"	f	class:user	typeref:typename:void
+set_user_point	src/connection.cpp	/^void	connection::set_user_point(user* user_p)$/;"	f	class:connection	typeref:typename:void
+socket_fd	inc/my_socket.hpp	/^		int						socket_fd;$/;"	m	class:my_socket	typeref:typename:int
+type	inc/user.hpp	/^		char					type;$/;"	m	class:user	typeref:typename:char
+us_con	inc/connect_orquestation.hpp	/^typedef std::pair<user, connection>	us_con;$/;"	t	typeref:typename:std::pair<user,connection>
+us_id	inc/user.hpp	/^		unsigned int			us_id;$/;"	m	class:user	typeref:typename:unsigned int
+user	inc/user.hpp	/^class user : public log$/;"	c
+user	src/user.cpp	/^user::user(unsigned int id) : us_id(id), nick("init"), name("init"), $/;"	f	class:user
+user_id	inc/server.hpp	/^		unsigned int	user_id;$/;"	m	class:server	typeref:typename:unsigned int
+user_point	inc/connection.hpp	/^		const user*					user_point;$/;"	m	class:connection	typeref:typename:const user *
+~msg	src/msg.cpp	/^msg::~msg()$/;"	f	class:msg
+~my_socket	src/my_socket.cpp	/^my_socket::~my_socket()$/;"	f	class:my_socket
+~poll_fd	src/poll_fd.cpp	/^poll_fd::~poll_fd() {}$/;"	f	class:poll_fd
