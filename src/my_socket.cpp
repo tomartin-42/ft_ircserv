@@ -71,7 +71,7 @@ int	my_socket::load_in_connections()
 {
 	int	check;
 
-	check = poll(&(this->poll_fd), 1, 500);
+	check = poll(&(this->poll_fd), 1, 1000);
 	if(check > 0)
 		this->accept_new_connect();
 	return check;
